@@ -6,12 +6,10 @@
         "next": [
             "HomeFlag",
             "StartGame",
-            "[JumpBack]ClosePage",
+            "[JumpBack]ClickBlank",
             "[JumpBack]MonCard",
-            "[JumpBack]VictoryReturn",
             "[JumpBack]BackButton",
             "[JumpBack]HomeButton",
-            "[JumpBack]LoadingGameEnter",
             "[JumpBack]Download",
             "[JumpBack]StartFZHJ"
         ]
@@ -57,7 +55,7 @@
         "next": [
             "HomeFlag",
             "StartGame",
-            "[JumpBack]ClosePage",
+            "[JumpBack]ClickBlank",
             "[JumpBack]MonCard",
             "[JumpBack]BackButton",
             "[JumpBack]HomeButton"
@@ -67,12 +65,11 @@
         "doc": "返回主界面（专供任务开始前使用）",
         "next": [
             "HomeFlagCloseReturnMain",
+            "[JumpBack]ClickBlank",
             "[JumpBack]HomeButton",
             "[JumpBack]BackButton",
-            "[JumpBack]ClosePage",
             "[JumpBack]StartGame",
             "[JumpBack]MonCard",
-            "[JumpBack]VictoryReturn",
             "[JumpBack]CloseGetItem"
         ]
     },
@@ -142,77 +139,27 @@
             "type": "Click"
         }
     },
-    "ClosePage": {
-        "doc": "关闭各种页面，如公告、弹窗等",
+    "ClickBlank": {
+        "doc": "点击空白区域关闭",
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "OCR",
             "param": {
                 "roi": [
-                    1139,
-                    7,
-                    127,
-                    130
+                    179,
+                    890,
+                    371,
+                    118
                 ],
-                "template": [
-                    "empty.png"
-                ],
-                "green_mask": true,
-                "threshold": 0.6,
-                "order_by": "Score"
+                "expected": [
+                    "点击空白",
+                    "区域关闭"
+                ]
             }
         },
         "action": {
             "type": "Click"
         },
         "post_delay": 3000
-    },
-    "VictoryReturn": {
-        "doc": "战斗胜利后返回主界面",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    811,
-                    73,
-                    283,
-                    75
-                ],
-                "expected": [
-                    "战斗胜利"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        }
-    },
-    "LoadingGameEnter": {
-        "doc": "加载完成后点击进入游戏",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    1080,
-                    645,
-                    85,
-                    27
-                ],
-                "expected": [
-                    "进入游戏"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click",
-            "param": {
-                "target_offset": [
-                    -100,
-                    -100,
-                    10,
-                    10
-                ]
-            }
-        }
     },
     "Download": {
         "doc": "游戏资源更新",

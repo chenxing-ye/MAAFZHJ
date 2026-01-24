@@ -133,5 +133,80 @@
         "action": {
             "type": "Click"
         }
+    },
+    "RoomBattleFlow": {
+        "doc": "房间战斗中流程",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    493,
+                    4,
+                    226,
+                    67
+                ],
+                "expected": [
+                    "回合",
+                    "剩余时间"
+                ]
+            }
+        },
+        "next": [
+            "RoomBattleFinish",
+            "[JumpBack]RoundSkip",
+            "[JumpBack]ClickBlankContinue"
+        ]
+    },
+    "RoomBattleFinish": {
+        "doc": "房间战斗结束",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    512,
+                    394,
+                    182,
+                    184
+                ],
+                "expected": [
+                    "数据"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    80,
+                    0,
+                    0
+                ]
+            }
+        },
+        "next": [
+            "RoomBattleFinishConfirm",
+            "RoomBattleFinish"
+        ]
+    },
+    "RoomBattleFinishConfirm": {
+        "doc": "房间战斗结束确认",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    245,
+                    1177,
+                    215,
+                    69
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
     }
 }

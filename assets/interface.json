@@ -47,52 +47,123 @@
             "repeat_count": 1
         },
         {
+            "name": "入侵深渊自动创房战斗",
+            "entry": "AbyssRoomTask",
+            "option": [
+                "使徒等级",
+                "助战元素属性"
+            ],
+            "doc": "[color:blue][size:20]需配置好队伍 并自行到达要打的怪处[/size][/color]",
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
             "name": "结束游戏",
             "entry": "CloseFZHJ"
         }
     ],
-    "助战元素属性": {
-        "cases": [
-            {
-                "name": "助战火元素",
-                "pipeline_override": {
-                    "SelectAssistElement": {
-                        "template": [
-                            "Battle/助战火元素__102_302_50_48__52_252_150_148.png"
-                        ]
+    "option": {
+        "助战元素属性": {
+            "cases": [
+                {
+                    "name": "助战火元素",
+                    "pipeline_override": {
+                        "SelectAssistElement": {
+                            "template": [
+                                "Battle/助战火元素__102_302_50_48__52_252_150_148.png"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "助战风元素",
+                    "pipeline_override": {
+                        "SelectAssistElement": {
+                            "template": [
+                                "Battle/助战风元素__216_302_51_48__166_252_151_148.png"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "助战土元素",
+                    "pipeline_override": {
+                        "SelectAssistElement": {
+                            "template": [
+                                "Battle/助战土元素__330_300_53_49__280_250_153_149.png"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "助战水元素",
+                    "pipeline_override": {
+                        "SelectAssistElement": {
+                            "template": [
+                                "Battle/助战水元素__442_300_52_49__392_250_152_149.png"
+                            ]
+                        }
                     }
                 }
-            },
-            {
-                "name": "助战风元素",
-                "pipeline_override": {
-                    "SelectAssistElement": {
-                        "template": [
-                            "Battle/助战风元素__216_302_51_48__166_252_151_148.png"
-                        ]
+            ]
+        },
+        "使徒等级": {
+            "cases": [
+                {
+                    "name": "100级",
+                    "pipeline_override": {
+                        "AbyssRoomSelectLv": {
+                            "roi": [
+                                522,
+                                186,
+                                151,
+                                68
+                            ]
+                        },
+                        "AbyssRoomTargetLv": {
+                            "expected": [
+                                "100"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "95级",
+                    "pipeline_override": {
+                        "AbyssRoomSelectLv": {
+                            "roi": [
+                                309,
+                                198,
+                                134,
+                                48
+                            ]
+                        },
+                        "AbyssRoomTargetLv": {
+                            "expected": [
+                                "95"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "90级",
+                    "pipeline_override": {
+                        "AbyssRoomSelectLv": {
+                            "roi": [
+                                69,
+                                193,
+                                184,
+                                63
+                            ]
+                        },
+                        "AbyssRoomTargetLv": {
+                            "expected": [
+                                "90"
+                            ]
+                        }
                     }
                 }
-            },
-            {
-                "name": "助战土元素",
-                "pipeline_override": {
-                    "SelectAssistElement": {
-                        "template": [
-                            "Battle/助战土元素__330_300_53_49__280_250_153_149.png"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "助战水元素",
-                "pipeline_override": {
-                    "SelectAssistElement": {
-                        "template": [
-                            "Battle/助战水元素__442_300_52_49__392_250_152_149.png"
-                        ]
-                    }
-                }
-            }
-        ]
+            ]
+        }
     }
 }

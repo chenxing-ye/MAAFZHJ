@@ -1,0 +1,222 @@
+{
+    "AbyssRoomTask": {
+        "doc": "开启深渊房间任务",
+        "next": [
+            "[JumpBack]RoomBattleFlow",
+            "[JumpBack]AbyssRoomDungeonStart",
+            "[JumpBack]AbyssRoomDungeonStartConfig",
+            "[JumpBack]AbyssRoomDungeonConfig",
+            "[JumpBack]AbyssCreateRoom",
+            "[JumpBack]AbyssRoomStart",
+            "[JumpBack]AbyssRoomStart1"
+        ]
+    },
+    "AbyssRoomStart": {
+        "doc": "挑战",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    539,
+                    724,
+                    114,
+                    115
+                ],
+                "expected": [
+                    "挑战"
+                ]
+            }
+        },
+        "focus": {
+            "Node.Recognition.Failed": "未识别到挑战按钮 请自行到怪的位置"
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AbyssRoomTargetLv",
+            "AbyssRoomStart",
+            "[JumpBack]AbyssRoomSelectLv"
+        ]
+    },
+    "AbyssRoomStart1": {
+        "doc": "挑战",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    464,
+                    611,
+                    222,
+                    306
+                ],
+                "template": [
+                    "Abyss/挑战按钮__569_750_54_70__519_700_154_170.png"
+                ]
+            }
+        },
+        "focus": {
+            "Node.Recognition.Failed": "未识别到挑战按钮 请自行到怪的位置"
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AbyssRoomTargetLv",
+            "AbyssRoomStart",
+            "[JumpBack]AbyssRoomSelectLv"
+        ]
+    },
+    "AbyssRoomTargetLv": {
+        "doc": "目标等级",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    47,
+                    260,
+                    245,
+                    79
+                ],
+                "expected": [
+                    "100"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AbyssCreateRoom",
+            "AbyssRoomTargetLv"
+        ]
+    },
+    // 100 [522,186,151,68]
+    // 95 [309,198,134,48]
+    // 90 [69,193,184,63]
+    "AbyssRoomSelectLv": {
+        "doc": "选择",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    522,
+                    186,
+                    151,
+                    68
+                ],
+                "expected": [
+                    "终末",
+                    "使徒"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "AbyssCreateRoom": {
+        "doc": "创建深渊房间",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    404,
+                    1009,
+                    201,
+                    90
+                ],
+                "expected": [
+                    "创建",
+                    "房间"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AbyssRoomDungeonConfig",
+            "AbyssCreateRoom",
+            "[JumpBack]SelectAssistMain"
+        ]
+    },
+    "AbyssRoomDungeonConfig": {
+        "doc": "深渊副本确定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    270,
+                    1011,
+                    186,
+                    68
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "RoomBattleFlow",
+            "AbyssRoomDungeonConfig",
+            "AbyssRoomDungeonStart"
+        ]
+    },
+    "AbyssRoomDungeonStart": {
+        "doc": "深渊副本开始战斗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    456,
+                    1187,
+                    192,
+                    55
+                ],
+                "expected": [
+                    "开始",
+                    "战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "RoomBattleFlow",
+            "AbyssRoomDungeonStartConfig",
+            "AbyssRoomDungeonStart"
+        ]
+    },
+    "AbyssRoomDungeonStartConfig": {
+        "doc": "深渊副本开始战斗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    386,
+                    778,
+                    264,
+                    132
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "RoomBattleFlow",
+            "AbyssRoomDungeonConfig",
+            "AbyssRoomDungeonStart"
+        ]
+    }
+}

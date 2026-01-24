@@ -40,9 +40,10 @@
             "name": "入侵深渊刷小怪",
             "entry": "AbyssTask",
             "option": [
-                "助战元素属性"
+                "助战元素属性",
+                "助战优先"
             ],
-            "doc": "[color:blue][size:20]需配置好队伍[/size][/color]",
+            "doc": "[color:blue][size:20]需配置好队伍 助战优先会在前三中优选匹配对应文字[/size][/color]",
             "repeatable": true,
             "repeat_count": 1
         },
@@ -51,9 +52,10 @@
             "entry": "AbyssRoomTask",
             "option": [
                 "使徒等级",
-                "助战元素属性"
+                "助战元素属性",
+                "助战优先"
             ],
-            "doc": "[color:blue][size:20]需配置好队伍 并自行到达要打的怪处[/size][/color]",
+            "doc": "[color:blue][size:20]需配置好队伍 并自行到达要打的怪处 助战优先会在前三中优选匹配对应文字[/size][/color]",
             "repeatable": true,
             "repeat_count": 1
         },
@@ -164,6 +166,39 @@
                     }
                 }
             ]
+        },
+        "助战优先": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "1号",
+                    "pipeline_type": "string",
+                    "default": "魔水",
+                    "verify": "^(?!\\s*$).+",
+                    "pattern_msg": "请输入第一优先识别的文字，如魔水、欧若拉、水属性",
+                    "description": "请输入优先识别的文字，如魔水、欧若拉、水属性"
+                },
+                {
+                    "name": "2号",
+                    "pipeline_type": "string",
+                    "default": "水属性",
+                    "verify": "^(?!\\s*$).+",
+                    "pattern_msg": "请输入第二优先识别的文字，如魔水、欧若拉、水属性",
+                    "description": "请输入优先识别的文字，如魔水、欧若拉、水属性"
+                }
+            ],
+            "pipeline_override": {
+                "SelectAssistTry1": {
+                    "expected": [
+                        "{1号}"
+                    ]
+                },
+                "SelectAssistTry2": {
+                    "expected": [
+                        "{2号}"
+                    ]
+                }
+            }
         }
     }
 }

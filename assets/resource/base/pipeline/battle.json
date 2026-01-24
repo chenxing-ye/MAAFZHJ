@@ -45,8 +45,52 @@
             "type": "Click"
         },
         "next": [
+            "SelectAssistTry1",
+            "SelectAssistTry2",
             "SelectAssistFrist"
         ]
+    },
+    "SelectAssistTry1": {
+        "doc": "尝试助战1",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    39,
+                    352,
+                    660,
+                    615
+                ],
+                "expected": [
+                    "魔水"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        }
+    },
+    "SelectAssistTry2": {
+        "doc": "尝试助战2",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    39,
+                    352,
+                    660,
+                    615
+                ],
+                "expected": [
+                    "水属性"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        }
     },
     "SelectAssistFrist": {
         "doc": "选择助战元素首个",
@@ -67,6 +111,7 @@
                 ]
             }
         },
+        "post_wait_freezes": 500,
         "action": {
             "type": "Click"
         }

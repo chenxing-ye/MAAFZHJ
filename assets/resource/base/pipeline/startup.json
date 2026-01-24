@@ -69,8 +69,7 @@
             "[JumpBack]HomeButton",
             "[JumpBack]BackButton",
             "[JumpBack]StartGame",
-            "[JumpBack]MonCard",
-            "[JumpBack]CloseGetItem"
+            "[JumpBack]MonCard"
         ]
     },
     "StartFZHJ": {
@@ -108,7 +107,8 @@
             "type": "TemplateMatch",
             "param": {
                 "template": [
-                    "StartUp/返回按钮__31_1217_84_45__0_1167_165_113.png"
+                    "StartUp/返回按钮__31_1217_84_45__0_1167_165_113.png",
+                    "StartUp/聊天返回按钮__16_1167_78_69__0_1117_144_163.png"
                 ]
             }
         },
@@ -159,7 +159,29 @@
         "action": {
             "type": "Click"
         },
-        "post_delay": 3000
+        "post_delay": 1000
+    },
+    "ClickBlankContinue": {
+        "doc": "点击空白处继续",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    185,
+                    1146,
+                    311,
+                    109
+                ],
+                "expected": [
+                    "点击空白",
+                    "处继续"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000
     },
     "Download": {
         "doc": "游戏资源更新",

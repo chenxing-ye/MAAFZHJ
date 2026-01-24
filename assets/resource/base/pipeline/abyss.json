@@ -1,0 +1,184 @@
+{
+    "AbyssTask": {
+        "doc": "开启深渊任务",
+        "next": [
+            "AbyssDungeonConfig",
+            "AbyssDungeon",
+            "AbyssInvasionStart",
+            "AbyssInvasionGoFinish",
+            "AbyssInvasionClick",
+            "AbyssClick",
+            "[JumpBack]ReturnMain"
+        ]
+    },
+    "AbyssClick": {
+        "doc": "点击入侵深渊",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    586,
+                    543,
+                    140,
+                    337
+                ],
+                "expected": [
+                    "终末",
+                    "之战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AbyssInvasionClick",
+            "AbyssClick"
+        ]
+    },
+    "AbyssInvasionClick": {
+        "doc": "点击入侵讨伐",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    459,
+                    1173,
+                    110,
+                    91
+                ],
+                "expected": [
+                    "入侵",
+                    "讨伐"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AbyssInvasionGoFinish",
+            "AbyssInvasionClick"
+        ]
+    },
+    "AbyssInvasionGoFinish": {
+        "doc": "入侵讨伐移动完成",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    270,
+                    398,
+                    194,
+                    123
+                ],
+                "template": [
+                    "Abyss/入侵讨伐移动完成__295_411_144_94__245_361_244_194.png"
+                ]
+            }
+        },
+        "next": [
+            "AbyssInvasionStart",
+            "[JumpBack]AbyssInvasionMove"
+        ]
+    },
+    "AbyssInvasionStart": {
+        "doc": "挑战",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    539,
+                    724,
+                    114,
+                    115
+                ],
+                "expected": [
+                    "挑战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "AbyssDungeon",
+            "AbyssInvasionStart",
+            "BattleFlow",
+            "[JumpBack]RestoreMp"
+        ]
+    },
+    "AbyssInvasionMove": {
+        "doc": "移动寻找挑战",
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    327,
+                    826,
+                    64,
+                    59
+                ],
+                "end": [
+                    327,
+                    698,
+                    64,
+                    59
+                ],
+                "duration": 500
+            }
+        }
+    },
+    "AbyssDungeon": {
+        "doc": "深渊副本",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    247,
+                    974,
+                    233,
+                    112
+                ],
+                "expected": [
+                    "挑战",
+                    "副本"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AbyssDungeonConfig",
+            "[JumpBack]SelectAssistMain"
+        ]
+    },
+    "AbyssDungeonConfig": {
+        "doc": "深渊副本确定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    270,
+                    1011,
+                    186,
+                    68
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "BattleFlow",
+            "AbyssDungeonConfig",
+            "AbyssInvasionStart",
+            "[JumpBack]RestoreMp"
+        ]
+    }
+}

@@ -1,357 +1,213 @@
 {
-    "CloseGetItem": {
-        "doc": "关闭获得道具弹窗",
+    "RestoreMp": {
+        "doc": "补充体力",
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "OCR",
             "param": {
                 "roi": [
-                    577,
-                    191,
-                    120,
-                    32
+                    251,
+                    139,
+                    197,
+                    73
                 ],
-                "template": "empty.png"
+                "expected": [
+                    "补充",
+                    "体力"
+                ]
+            }
+        },
+        "next": [
+            "UseMp"
+        ]
+    },
+    "RestoreMpMainInverse": {
+        "doc": "识别不到补充体力",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    251,
+                    139,
+                    197,
+                    73
+                ],
+                "expected": [
+                    "补充",
+                    "体力"
+                ]
+            }
+        },
+        "inverse": true
+    },
+    // 使用体力
+    "UseMp": {
+        "doc": "使用体力",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    421,
+                    572,
+                    231,
+                    445
+                ],
+                "expected": [
+                    "使用"
+                ]
             }
         },
         "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    100,
-                    100,
-                    10,
-                    10
-                ]
-            }
-        }
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "UseMpDetail",
+            "UseMp"
+        ]
     },
-    "CloseLevelUp": {
-        "doc": "关闭等级提升弹窗",
+    "UseMpDetail": {
+        "doc": "使用体力详情界面",
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "OCR",
             "param": {
                 "roi": [
-                    526,
-                    267,
-                    228,
-                    56
+                    251,
+                    133,
+                    203,
+                    76
                 ],
-                "template": "empty.png"
+                "expected": [
+                    "物品详情"
+                ]
             }
         },
         "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    100,
-                    100,
-                    10,
-                    10
-                ]
-            }
-        }
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "UseMpAddFlows"
+        ]
     },
-    "StorySkip": {
-        "doc": "点击剧情跳过按钮",
+    "UseMpAddFlows": {
+        "next": [
+            "CheckMp",
+            "[JumpBack]UseMpAdd"
+        ]
+    },
+    "UseMpAdd": {
+        "doc": "增加按钮",
         "recognition": {
             "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    1178,
-                    23,
+                    439,
+                    614,
+                    207,
+                    166
+                ],
+                "template": [
+                    "Common/添加体力按钮__568_703_25_24__518_653_125_124.png"
+                ]
+            }
+        },
+        "repeat": 10,
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "UseMpSub"
+        ]
+    },
+    "UseMpSub": {
+        "doc": "减少按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    81,
+                    641,
+                    145,
+                    133
+                ],
+                "template": [
+                    "Common/减少体力按钮__122_703_29_25__72_653_129_125.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "UseMpConfirm"
+        ]
+    },
+    // 确定使用
+    "UseMpConfirm": {
+        "doc": "确定使用按钮",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    405,
+                    745,
+                    230,
+                    134
+                ],
+                "expected": [
+                    "使用"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "CheckMp": {
+        "doc": "检查体力是否大于30",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    203,
+                    584,
+                    170,
+                    76
+                ],
+                "expected": [
+                    "^(3[1-9]|[4-9][0-9]|[1-9][0-9]{2,})$"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "CloseMp"
+        ]
+    },
+    "CloseMp": {
+        "next": [
+            "[JumpBack]CloseMpButton",
+            "[[JumpBack]BackButton",
+            "RestoreMpMainInverse"
+        ]
+    },
+    "CloseMpButton": {
+        "doc": "关闭体力界面",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
                     79,
-                    30
-                ],
-                "template": "empty.png"
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "next": [
-            "StorySkipAll",
-            "StorySkip"
-        ]
-    },
-    "StorySkipAll": {
-        "doc": "点击剧情跳过全部按钮",
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    524,
-                    430,
-                    36,
-                    31
-                ],
-                "template": "empty.png"
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "next": [
-            "StorySkipOK"
-        ]
-    },
-    "StorySkipOK": {
-        "doc": "点击剧情跳过确定按钮",
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    939,
-                    494,
-                    89,
-                    34
-                ],
-                "template": "empty.png"
-            }
-        },
-        "action": {
-            "type": "Click"
-        }
-    },
-    "VoidTap": {
-        "doc": "点击空白区域",
-        "action": {
-            "type": "Click",
-            "param": {
-                "target": [
-                    640,
-                    10,
-                    10,
-                    10
-                ]
-            }
-        }
-    },
-    "ItemBuyMax": {
-        "doc": "点击购买物品最大值按钮",
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    768,
-                    475,
-                    51,
-                    28
-                ],
-                "template": "empty.png"
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "next": [
-            "ItemBuyConfirm"
-        ]
-    },
-    "ItemSoldOut": {
-        "doc": "检测物品是否已售罄",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    587,
-                    15,
-                    102,
-                    34
+                    739,
+                    272,
+                    148
                 ],
                 "expected": [
-                    "已",
-                    "罄",
-                    "售"
+                    "关闭"
                 ]
-            }
-        }
-    },
-    "ItemBuyConfirm": {
-        "doc": "点击物品购买确认按钮",
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    837,
-                    562,
-                    54,
-                    28
-                ],
-                "template": "empty.png"
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "next": [
-            "ItemBuyFail",
-            "[JumpBack]CloseGetItem"
-        ],
-        "on_error": [
-            "Stop"
-        ],
-        "timeout": 1000
-    },
-    "ItemBuyFail": {
-        "doc": "检测物品购买失败",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    557,
-                    18,
-                    179,
-                    32
-                ],
-                "expected": [
-                    "不足",
-                    "无法"
-                ]
-            }
-        },
-        "next": [
-            "Stop"
-        ]
-    },
-    "AddEnergyMain": {
-        "doc": "在主界面检测并补充体力",
-        "enabled": false,
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    565,
-                    136,
-                    141,
-                    35
-                ],
-                "template": [
-                    "empty.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "next": [
-            "AddEnergyFinish",
-            "AddEnergy"
-        ]
-    },
-    "AddEnergy": {
-        "doc": "点击补充体力按钮",
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    452,
-                    186,
-                    541,
-                    144
-                ],
-                "template": [
-                    "empty.png"
-                ],
-                "threshold": 0.98
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "next": [
-            "AddEnergyConfirm"
-        ]
-    },
-    "AddEnergyConfirm": {
-        "doc": "点击补充体力确认按钮",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    495,
-                    443,
-                    314,
-                    29
-                ],
-                "expected": [
-                    "恢复"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "next": [
-            "ClickConfirm"
-        ]
-    },
-    "ClickConfirm": {
-        "doc": "点击确认按钮",
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    786,
-                    487,
-                    66,
-                    27
-                ],
-                "template": [
-                    "empty.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        }
-    },
-    "ItemMissing": {
-        "doc": "检测道具不足",
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    491,
-                    19,
-                    293,
-                    29
-                ],
-                "template": [
-                    "empty.png"
-                ]
-            }
-        }
-    },
-    "AddEnergyFinish": {
-        "doc": "检测体力补充完成",
-        "recognition": {
-            "type": "OCR",
-            "param": {
-                "roi": [
-                    930,
-                    24,
-                    37,
-                    23
-                ],
-                "expected": "^([6-9]\\d|\\d{3,})(/)?$"
-            }
-        },
-        "next": [
-            "AddEnergyClose"
-        ]
-    },
-    "AddEnergyClose": {
-        "doc": "关闭补充体力界面",
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    438,
-                    488,
-                    54,
-                    29
-                ],
-                "template": "empty.png"
             }
         },
         "action": {

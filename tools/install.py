@@ -132,6 +132,5 @@ if __name__ == "__main__":
     install_deps()
     install_resource()
     install_chores()
-    install_agent()
 
     print(f"Install to {install_path} successfully.")

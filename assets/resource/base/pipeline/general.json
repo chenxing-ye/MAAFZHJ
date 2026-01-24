@@ -1,0 +1,8 @@
+{
+    "Screenshot": {
+        "doc": "处理任务超时等异常情况的截图配置",
+        "focus": {
+            "Node.Action.Starting": "err:任务超时，可能未按预期进行。"
+        }
+    }
+}

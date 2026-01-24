@@ -1,0 +1,361 @@
+{
+    "CloseGetItem": {
+        "doc": "关闭获得道具弹窗",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    577,
+                    191,
+                    120,
+                    32
+                ],
+                "template": "empty.png"
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    100,
+                    100,
+                    10,
+                    10
+                ]
+            }
+        }
+    },
+    "CloseLevelUp": {
+        "doc": "关闭等级提升弹窗",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    526,
+                    267,
+                    228,
+                    56
+                ],
+                "template": "empty.png"
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    100,
+                    100,
+                    10,
+                    10
+                ]
+            }
+        }
+    },
+    "StorySkip": {
+        "doc": "点击剧情跳过按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1178,
+                    23,
+                    79,
+                    30
+                ],
+                "template": "empty.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "StorySkipAll",
+            "StorySkip"
+        ]
+    },
+    "StorySkipAll": {
+        "doc": "点击剧情跳过全部按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    524,
+                    430,
+                    36,
+                    31
+                ],
+                "template": "empty.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "StorySkipOK"
+        ]
+    },
+    "StorySkipOK": {
+        "doc": "点击剧情跳过确定按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    939,
+                    494,
+                    89,
+                    34
+                ],
+                "template": "empty.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "VoidTap": {
+        "doc": "点击空白区域",
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    640,
+                    10,
+                    10,
+                    10
+                ]
+            }
+        }
+    },
+    "ItemBuyMax": {
+        "doc": "点击购买物品最大值按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    768,
+                    475,
+                    51,
+                    28
+                ],
+                "template": "empty.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ItemBuyConfirm"
+        ]
+    },
+    "ItemSoldOut": {
+        "doc": "检测物品是否已售罄",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    587,
+                    15,
+                    102,
+                    34
+                ],
+                "expected": [
+                    "已",
+                    "罄",
+                    "售"
+                ]
+            }
+        }
+    },
+    "ItemBuyConfirm": {
+        "doc": "点击物品购买确认按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    837,
+                    562,
+                    54,
+                    28
+                ],
+                "template": "empty.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ItemBuyFail",
+            "[JumpBack]CloseGetItem"
+        ],
+        "on_error": [
+            "Stop"
+        ],
+        "timeout": 1000
+    },
+    "ItemBuyFail": {
+        "doc": "检测物品购买失败",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    557,
+                    18,
+                    179,
+                    32
+                ],
+                "expected": [
+                    "不足",
+                    "无法"
+                ]
+            }
+        },
+        "next": [
+            "Stop"
+        ]
+    },
+    "AddEnergyMain": {
+        "doc": "在主界面检测并补充体力",
+        "enabled": false,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    565,
+                    136,
+                    141,
+                    35
+                ],
+                "template": [
+                    "empty.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AddEnergyFinish",
+            "AddEnergy"
+        ]
+    },
+    "AddEnergy": {
+        "doc": "点击补充体力按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    452,
+                    186,
+                    541,
+                    144
+                ],
+                "template": [
+                    "empty.png"
+                ],
+                "threshold": 0.98
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AddEnergyConfirm"
+        ]
+    },
+    "AddEnergyConfirm": {
+        "doc": "点击补充体力确认按钮",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    495,
+                    443,
+                    314,
+                    29
+                ],
+                "expected": [
+                    "恢复"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ClickConfirm"
+        ]
+    },
+    "ClickConfirm": {
+        "doc": "点击确认按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    786,
+                    487,
+                    66,
+                    27
+                ],
+                "template": [
+                    "empty.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ItemMissing": {
+        "doc": "检测道具不足",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    491,
+                    19,
+                    293,
+                    29
+                ],
+                "template": [
+                    "empty.png"
+                ]
+            }
+        }
+    },
+    "AddEnergyFinish": {
+        "doc": "检测体力补充完成",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    930,
+                    24,
+                    37,
+                    23
+                ],
+                "expected": "^([6-9]\\d|\\d{3,})(/)?$"
+            }
+        },
+        "next": [
+            "AddEnergyClose"
+        ]
+    },
+    "AddEnergyClose": {
+        "doc": "关闭补充体力界面",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    438,
+                    488,
+                    54,
+                    29
+                ],
+                "template": "empty.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}

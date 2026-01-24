@@ -1,0 +1,18 @@
+{
+    "MyTask1": {
+        "doc": "示例普通任务"
+    },
+    "MyTask2": {
+        "doc": "示例选项任务"
+    },
+    "MyTask3": {
+        "doc": "示例参数任务"
+    },
+    "MyTask4": {
+        "doc": "示例带Custom的任务",
+        "recognition": "Custom",
+        "custom_recognition": "my_reco_222",
+        "action": "Custom",
+        "custom_action": "my_action_111"
+    }
+}

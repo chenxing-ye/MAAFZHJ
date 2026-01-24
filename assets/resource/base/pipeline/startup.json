@@ -1,0 +1,320 @@
+{
+    "StartUp": {
+        "doc": "游戏启动主流程入口，处理各种启动场景",
+        "post_wait_freezes": 300,
+        "timeout": 60000,
+        "next": [
+            "HomeFlag",
+            "StartGame",
+            "[JumpBack]GameLoading",
+            "[JumpBack]ClosePage",
+            "[JumpBack]MonCard",
+            "[JumpBack]VictoryReturn",
+            "[JumpBack]BackButton",
+            "[JumpBack]HomeButton",
+            "[JumpBack]LoadingGameEnter",
+            "[JumpBack]Download",
+            "[JumpBack]StartFZHJ",
+        ]
+    },
+    "HomeFlag": {
+        "doc": "检测游戏主界面，确认游戏已成功启动",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    499,
+                    624,
+                    417,
+                    82
+                ],
+                "expected": [
+                    "惑星",
+                    "之间"
+                ]
+            }
+        }
+    },
+    "StartGame": {
+        "doc": "点击登录游戏按钮，进入游戏",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    435,
+                    511,
+                    414,
+                    65
+                ],
+                "expected": [
+                    "点击登",
+                    "陆游戏"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "HomeFlag",
+            "StartGame",
+            "[JumpBack]ClosePage",
+            "[JumpBack]MonCard",
+            "[JumpBack]BackButton",
+            "[JumpBack]HomeButton"
+        ]
+    },
+    "ReturnMain": {
+        "doc": "返回主界面（专供任务开始前使用）",
+        "next": [
+            "HomeFlagCloseReturnMain",
+            "[JumpBack]HomeButton",
+            "[JumpBack]BackButton",
+            "[JumpBack]ClosePage",
+            "[JumpBack]StartGame",
+            "[JumpBack]MonCard",
+            "[JumpBack]VictoryReturn",
+            "[JumpBack]CloseGetItem"
+        ]
+    },
+    "StartFZHJ": {
+        "doc": "启动游戏应用",
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.Sextante.Micross"
+            }
+        },
+        "post_delay": 3000
+    },
+    "GameLoading": {
+        "doc": "检测游戏资源加载状态，等待加载完成",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1157,
+                    637,
+                    28,
+                    38
+                ],
+                "template": "empty.png"
+            }
+        },
+        "post_delay": 3000
+    },
+    "HomeFlagCloseReturnMain": {
+        "doc": "返回主界面后检测主界面标志",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1092,
+                    615,
+                    76,
+                    48
+                ],
+                "template": "empty.png"
+            }
+        }
+    },
+    "BackButton": {
+        "doc": "点击返回上一级按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    20,
+                    16,
+                    77,
+                    29
+                ],
+                "template": [
+                    "empty.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "BackButtonWithDelay": {
+        "doc": "点击返回上一级按钮并延迟等待",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    20,
+                    16,
+                    77,
+                    29
+                ],
+                "template": [
+                    "empty.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 3000
+    },
+    "HomeButton": {
+        "doc": "点击返回主界面按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    143,
+                    19,
+                    60,
+                    27
+                ],
+                "template": [
+                    "empty.png"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClosePage": {
+        "doc": "关闭各种页面，如公告、弹窗等",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    1139,
+                    7,
+                    127,
+                    130
+                ],
+                "template": [
+                    "empty.png"
+                ],
+                "green_mask": true,
+                "threshold": 0.6,
+                "order_by": "Score"
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 3000
+    },
+    "VictoryReturn": {
+        "doc": "战斗胜利后返回主界面",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    811,
+                    73,
+                    283,
+                    75
+                ],
+                "expected": [
+                    "战斗胜利"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "LoadingGameEnter": {
+        "doc": "加载完成后点击进入游戏",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    1080,
+                    645,
+                    85,
+                    27
+                ],
+                "expected": [
+                    "进入游戏"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -100,
+                    -100,
+                    10,
+                    10
+                ]
+            }
+        }
+    },
+    "Download": {
+        "doc": "游戏资源更新",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    225,
+                    323,
+                    296,
+                    143
+                ],
+                "expected": [
+                    "更新"
+                ]
+            }
+        },
+        "next": "DownloadConfig"
+    },
+    "DownloadConfig": {
+        "doc": "游戏资源更新确定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    220,
+                    689,
+                    301,
+                    153
+                ],
+                "expected": [
+                    "确认"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "MonCard": {
+        "doc": "点击月卡领取按钮",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    507,
+                    540,
+                    269,
+                    39
+                ],
+                "expected": [
+                    "月卡"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "Stop": {
+        "doc": "停止当前任务",
+        "action": "DoNothing"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "CloseFZHJ": {
+        "doc": "关闭游戏应用",
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.Sextante.Micross"
+            }
+        }
+    }
+}

@@ -176,7 +176,7 @@
                     76
                 ],
                 "expected": [
-                    "^(3[1-9]|[4-9][0-9]|[1-9][0-9]{2,})$"
+                    "^\\D*(3[1-9]|[4-9][0-9]|[1-9][0-9]{2,})$"
                 ]
             }
         },
@@ -190,7 +190,7 @@
     "CloseMp": {
         "next": [
             "[JumpBack]CloseMpButton",
-            "[[JumpBack]BackButton",
+            "[JumpBack]BackButton",
             "RestoreMpMainInverse"
         ]
     },

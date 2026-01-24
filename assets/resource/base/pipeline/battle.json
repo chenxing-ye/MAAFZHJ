@@ -34,6 +34,8 @@
                     573,
                     70
                 ],
+                "order_by": "Score",
+                "threshold": 0.85,
                 "template": [
                     "Battle/助战火元素__102_302_50_48__52_252_150_148.png"
                 ]

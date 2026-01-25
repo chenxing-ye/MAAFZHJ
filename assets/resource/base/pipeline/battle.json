@@ -47,8 +47,35 @@
         "next": [
             "SelectAssistTry1",
             "SelectAssistTry2",
+            "[JumpBack]SelectAssistSwip"
+        ],
+        "timeout": 1000,
+        "on_error": [
             "SelectAssistFrist"
         ]
+    },
+    "SelectAssistSwip": {
+        "doc": "滑动选择助战",
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    341,
+                    963,
+                    26,
+                    20
+                ],
+                "end": [
+                    341,
+                    605,
+                    26,
+                    20
+                ],
+                "duration": 500
+            }
+        },
+        "post_wait_freezes": 150,
+        "max_hit": 3
     },
     "SelectAssistTry1": {
         "doc": "尝试助战1",
@@ -56,10 +83,10 @@
             "type": "OCR",
             "param": {
                 "roi": [
-                    39,
+                    50,
                     352,
-                    660,
-                    615
+                    627,
+                    696
                 ],
                 "expected": [
                     "魔水"
@@ -77,10 +104,10 @@
             "type": "OCR",
             "param": {
                 "roi": [
-                    39,
+                    50,
                     352,
-                    660,
-                    615
+                    627,
+                    696
                 ],
                 "expected": [
                     "水属性"
@@ -98,10 +125,10 @@
             "type": "OCR",
             "param": {
                 "roi": [
-                    48,
-                    377,
-                    620,
-                    206
+                    50,
+                    352,
+                    627,
+                    696
                 ],
                 "expected": [
                     "Rank",

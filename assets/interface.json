@@ -112,6 +112,24 @@
         "使徒等级": {
             "cases": [
                 {
+                    "name": "150级",
+                    "pipeline_override": {
+                        "AbyssRoomSelectLv": {
+                            "roi": [
+                                69,
+                                193,
+                                184,
+                                63
+                            ]
+                        },
+                        "AbyssRoomTargetLv": {
+                            "expected": [
+                                "150"
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "100级",
                     "pipeline_override": {
                         "AbyssRoomSelectLv": {

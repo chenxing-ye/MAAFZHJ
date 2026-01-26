@@ -2,6 +2,7 @@
     "AbyssRoomTask": {
         "doc": "开启深渊房间任务",
         "next": [
+            "AbyssClick2",
             "[JumpBack]RoomBattleFlow",
             "[JumpBack]AbyssRoomDungeonStart",
             "[JumpBack]AbyssRoomDungeonStartConfig",
@@ -11,17 +12,132 @@
             "[JumpBack]AbyssRoomStart1"
         ]
     },
+    "AbyssClick2":{
+        "doc": "点击入侵深渊",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    586,
+                    543,
+                    140,
+                    337
+                ],
+                "expected": [
+                    "终末",
+                    "之战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AbyssCrackClick",
+            "AbyssClick2"
+        ]
+    },
+    "AbyssCrackClick": {
+        "doc": "点击深渊裂缝讨伐",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [586,1130,123,135],
+                "expected": [
+                    "深入",
+                    "裂缝"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "AbyssCrackGoFinish",
+            "AbyssCrackClick"
+        ]
+    },
+    "AbyssCrackGoFinish": {
+        "doc": "入侵讨伐移动完成",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [251,395,270,122],
+                "template": [
+                    "Abyss/深入裂缝完成标注点.png"
+                ]
+            }
+        },
+        "next": [
+            "AbyssCrackMoveLeftAndRight"
+        ]
+    },
+    //右走数据
+    // "begin" : [356,842,1,1],
+    // "end" : [400,841,1,1],
+    //左边走数据
+    // "begin" : [356,842,1,1],
+    // "end" : [312,841,1,1],
+    "AbyssCrackMoveLeftAndRight": {
+        "doc": "初始方向左右",
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [356,842,1,1],
+                "end" : [312,841,1,1],
+                "duration": 500
+            }
+        },
+        "next": [
+            "AbyssCrackGoFinishLeftAndRight",
+            "AbyssCrackMoveLeftAndRight"
+        ]
+    },
+    //左边坐标 "roi" : [392,402,207,102],  "Abyss/深入裂缝左移动后坐标点.png"
+    //右边坐标 "roi" : [394,381,255,179] "Abyss/深入裂缝右移动后坐标点.png"
+    "AbyssCrackGoFinishLeftAndRight": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [392,402,207,102],
+                "template": [
+                    "Abyss/深入裂缝左移动后坐标点.png"
+                ]
+            }
+        },
+        "next": [
+            "AbyssRoomStart",
+            "[JumpBack]AbyssCrackMove"
+        ]
+    },
+
+    "AbyssCrackMove": {
+        "doc": "移动寻找挑战",
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    327,
+                    826,
+                    64,
+                    59
+                ],
+                "end": [
+                    327,
+                    638,
+                    64,
+                    59
+                ],
+                "duration": 500
+            }
+        }
+    },
     "AbyssRoomStart": {
         "doc": "挑战",
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [
-                    539,
-                    724,
-                    114,
-                    115
-                ],
+                "roi" : [464,587,256,303],
                 "expected": [
                     "挑战"
                 ]
@@ -85,14 +201,13 @@
                 ]
             }
         },
-        "action": {
-            "type": "Click"
-        },
         "next": [
             "AbyssCreateRoom",
             "AbyssRoomTargetLv"
         ]
     },
+    // 200 "roi" : [233,139,317,163]
+    // 150 "roi" : [2,139,315,161]
     // 100 [522,186,151,68]
     // 95 [309,198,134,48]
     // 90 [69,193,184,63]
@@ -120,17 +235,11 @@
     "AbyssCreateRoom": {
         "doc": "创建深渊房间",
         "recognition": {
-            "type": "OCR",
+            "type": "TemplateMatch",
             "param": {
-                "roi": [
-                    404,
-                    1009,
-                    201,
-                    90
-                ],
-                "expected": [
-                    "创建",
-                    "房间"
+                "roi" : [413,1016,200,77],
+                "template": [
+                    "Common/创建房间按钮.png"
                 ]
             }
         },

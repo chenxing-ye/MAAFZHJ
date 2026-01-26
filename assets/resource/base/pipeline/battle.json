@@ -164,7 +164,29 @@
             "[JumpBack]BattleNext",
             "[JumpBack]RestoreMp",
             "[JumpBack]RoundSkip",
-            "[JumpBack]ClickBlankContinue"
+            "[JumpBack]ClickBlankContinue",
+            "[JumpBack]SelectAssistMain",
+            "ConfirmToStartFight"
+        ]
+    },
+    "ConfirmToStartFight": {
+        "doc": "开始挑战",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [261,1037,195,48],
+                "template": [
+                    "Common/开始战斗.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "BattleFlow",
+            "[JumpBack]SelectAssistMain",
+            "[JumpBack]RestoreMp"
         ]
     },
     "RoundSkip": {
@@ -193,14 +215,11 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [
-                    92,
-                    1183,
-                    151,
-                    60
-                ],
+                "roi" : [88,1153,265,101],
                 "expected": [
-                    "下一关"
+                    "下一关",
+                    "再次",
+                    "挑战"
                 ]
             }
         },
@@ -208,6 +227,7 @@
             "type": "Click"
         }
     },
+//
     "RoomBattleFlow": {
         "doc": "房间战斗中流程",
         "recognition": {

@@ -1,0 +1,121 @@
+{
+  "AutoPlayTask": {
+    "doc": "开启玩法系列任务",
+    "next": [
+      "PlayClick"
+    ]
+  },
+  "PlayClick": {
+    "doc": "点击玩法入口",
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi" : [337,1129,175,151],
+        "expected": [
+          "玩法"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "ElemTrialsSelIF",
+      "[JumpBack]SwipeUptoSwitch"
+    ]
+  },
+  "ElemTrialsSelIF": {
+    "doc": "元素试炼系列选择",
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "roi" : [0,401,719,781],
+        "threshold": 0.9,
+        "template": [
+          "Gameplay/火元素试炼.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+        "SelectDifficultyLevel",
+        "[JumpBack]PlayClick"
+    ]
+  },
+  // "expected" : "恶梦 "roi" : [284,132,168,166]
+  // "expected" : "困难" "roi" : [187,125,182,172]
+  // "expected" : "普通" "roi" : [98,142,166,155]
+  // "expected" : "简单" "roi" : [0,140,179,150]
+  "SelectDifficultyLevel": {
+    "doc": "难度选择",
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "roi" : [284,132,168,166],
+        "expected": [
+          "恶梦"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "ElemTrialsStartFight"
+    ]
+  },
+  "ElemTrialsStartFight": {
+    "doc": "开始挑战",
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "roi" : [269,1063,185,56],
+        "template": [
+          "Common/开始挑战.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "InitiateBattle",
+      "[JumpBack]RestoreMp",
+      "[JumpBack]SelectAssistMain"
+    ]
+  },
+  "InitiateBattle": {
+    "doc": "开始挑战",
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "roi" : [261,1037,195,48],
+        "template": [
+          "Common/开始战斗.png"
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "BattleFlow",
+      "InitiateBattle",
+      "[JumpBack]SelectAssistMain",
+      "[JumpBack]RestoreMp"
+    ]
+  },
+  "SwipeUptoSwitch": {
+    "doc": "向上滑动",
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "begin" : [375,960,1,1],
+        "end" : [374,900,1,1],
+        "duration": 500
+      }
+    }
+  }
+}

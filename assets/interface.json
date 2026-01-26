@@ -60,6 +60,18 @@
             "repeat_count": 1
         },
         {
+            "name": "元素试炼",
+            "entry": "AutoPlayTask",
+            "option": [
+                "助战元素属性",
+                "助战优先",
+                "元素试炼系列",
+                "难度选择"
+            ],
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
             "name": "结束游戏",
             "entry": "CloseFZHJ"
         }
@@ -330,6 +342,253 @@
                     ]
                 }
             }
+        },
+        "元素试炼系列": {
+            "cases": [
+                {
+                    "name": "史莱姆宝库",
+                    "pipeline_override": {
+                        "ElemTrialsSelIF": {
+                            "doc": "元素试炼系列选择",
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "roi" : [0,401,719,781],
+                                    "threshold": 0.9,
+                                    "template": [
+                                        "Gameplay/史莱姆宝库.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "CheckMp": {
+                            "doc": "检查体力是否大于30",
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi": [
+                                        203,
+                                        584,
+                                        170,
+                                        76
+                                    ],
+                                    "expected": [
+                                        "^\\D*((?<!100)[1-9][0-9]{2,})$"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "火元素试炼",
+                    "pipeline_override": {
+                        "ElemTrialsSelIF": {
+                            "doc": "元素试炼系列选择",
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "roi" : [0,401,719,781],
+                                    "threshold": 0.9,
+                                    "template": [
+                                        "Gameplay/火元素试炼.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "CheckMp": {
+                            "doc": "检查体力是否大于30",
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi": [
+                                        203,
+                                        584,
+                                        170,
+                                        76
+                                    ],
+                                    "expected": [
+                                        "^\\D*((?<!100)[1-9][0-9]{2,})$"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "风元素试炼",
+                    "pipeline_override": {
+                        "ElemTrialsSelIF": {
+                            "doc": "元素试炼系列选择",
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "roi" : [0,401,719,781],
+                                    "threshold": 0.9,
+                                    "template": [
+                                        "Gameplay/风元素试炼.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "CheckMp": {
+                            "doc": "检查体力是否大于30",
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi": [
+                                        203,
+                                        584,
+                                        170,
+                                        76
+                                    ],
+                                    "expected": [
+                                        "^\\D*((?<!100)[1-9][0-9]{2,})$"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "水元素试炼",
+                    "pipeline_override": {
+                        "ElemTrialsSelIF": {
+                            "doc": "元素试炼系列选择",
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "roi" : [0,401,719,781],
+                                    "threshold": 0.9,
+                                    "template": [
+                                        "Gameplay/水元素试炼.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "CheckMp": {
+                            "doc": "检查体力是否大于30",
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi": [
+                                        203,
+                                        584,
+                                        170,
+                                        76
+                                    ],
+                                    "expected": [
+                                        "^\\D*((?<!100)[1-9][0-9]{2,})$"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "土元素试炼",
+                    "pipeline_override": {
+                        "ElemTrialsSelIF": {
+                            "doc": "元素试炼系列选择",
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "roi" : [0,401,719,781],
+                                    "threshold": 0.9,
+                                    "template": [
+                                        "Gameplay/土元素试炼.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "CheckMp": {
+                            "doc": "检查体力是否大于30",
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi": [
+                                        203,
+                                        584,
+                                        170,
+                                        76
+                                    ],
+                                    "expected": [
+                                        "^\\D*((?<!100)[1-9][0-9]{2,})$"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "难度选择": {
+            "cases": [
+                {
+                    "name": "简单",
+                    "pipeline_override" : {
+                        "SelectDifficultyLevel": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi" : [0,140,179,150],
+                                    "expected": [
+                                        "简单"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "普通",
+                    "pipeline_override" : {
+                        "SelectDifficultyLevel": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi" : [98,142,166,155],
+                                    "expected": [
+                                        "普通"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "困难",
+                    "pipeline_override" : {
+                        "SelectDifficultyLevel": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi" : [187,125,182,172],
+                                    "expected": [
+                                        "困难"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "恶梦",
+                    "pipeline_override" : {
+                        "SelectDifficultyLevel": {
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi" : [284,132,168,166],
+                                    "expected": [
+                                        "恶梦"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
         }
     }
 }

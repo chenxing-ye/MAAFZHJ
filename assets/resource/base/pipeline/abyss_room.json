@@ -175,6 +175,7 @@
         "focus": {
             "Node.Recognition.Failed": "未识别到挑战按钮 请自行到怪的位置"
         },
+        "pre_delay": 150,
         "post_wait_freezes": 500,
         "action": {
             "type": "Click"
@@ -199,7 +200,8 @@
                 "expected": [
                     "100"
                 ]
-            }
+            },
+            "pre_delay": 150
         },
         "next": [
             "AbyssCreateRoom",

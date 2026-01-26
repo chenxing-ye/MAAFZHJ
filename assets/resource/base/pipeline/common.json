@@ -213,5 +213,25 @@
         "action": {
             "type": "Click"
         }
+    },
+    "CommonRecognition": {
+        "doc": "通用识别",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    203,
+                    584,
+                    170,
+                    76
+                ],
+                "expected": [
+                    ""
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
     }
 }

@@ -72,6 +72,18 @@
             "repeat_count": 1
         },
         {
+            "name": "自定义识别并点击",
+            "entry": "CommonRecognition",
+            "option": [
+                "识别范围",
+                "识别文字",
+                "是否循环",
+                "点击后等待"
+            ],
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
             "name": "结束游戏",
             "entry": "CloseFZHJ"
         }
@@ -589,6 +601,122 @@
                     }
                 }
             ]
+        },
+        "识别范围": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "x",
+                    "pipeline_type": "int",
+                    "default": "0",
+                    "verify": "^\\d+$",
+                    "pattern_msg": "请输入有效的数字",
+                    "description": "输入识别区域的x坐标"
+                },
+                {
+                    "name": "y",
+                    "pipeline_type": "int",
+                    "default": "0",
+                    "verify": "^\\d+$",
+                    "pattern_msg": "请输入有效的数字",
+                    "description": "输入识别区域的y坐标"
+                },
+                {
+                    "name": "width",
+                    "pipeline_type": "int",
+                    "default": "720",
+                    "verify": "^\\d+$",
+                    "pattern_msg": "请输入有效的数字",
+                    "description": "输入识别区域的宽度"
+                },
+                {
+                    "name": "height",
+                    "pipeline_type": "int",
+                    "default": "1280",
+                    "verify": "^\\d+$",
+                    "pattern_msg": "请输入有效的数字",
+                    "description": "输入识别区域的高度"
+                }
+            ],
+            "pipeline_override": {
+                "CommonRecognition": {
+                    "recognition": {
+                        "param": {
+                            "roi": [
+                                "{x}",
+                                "{y}",
+                                "{width}",
+                                "{height}"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "识别文字": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "目标文字",
+                    "pipeline_type": "string",
+                    "default": "讨伐商店",
+                    "verify": "^(?!\\s*$).+",
+                    "pattern_msg": "请输入要识别的文字",
+                    "description": "输入要识别的文字内容"
+                }
+            ],
+            "pipeline_override": {
+                "CommonRecognition": {
+                    "recognition": {
+                        "param": {
+                            "expected": [
+                                "{目标文字}"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "是否循环": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "是",
+                    "pipeline_override": {
+                        "CommonRecognition": {
+                            "next": [
+                                "CommonRecognition"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "否",
+                    "pipeline_override": {
+                        "CommonRecognition": {
+                            "next": []
+                        }
+                    }
+                }
+            ]
+        },
+        "点击后等待": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "等待毫秒",
+                    "pipeline_type": "int",
+                    "default": "500",
+                    "verify": "^\\d+$",
+                    "pattern_msg": "请输入有效的数字",
+                    "description": "设置点击后等待画面静止的时间（毫秒）"
+                }
+            ],
+            "pipeline_override": {
+                "CommonRecognition": {
+                    "post_wait_freezes": "{等待毫秒}"
+                }
+            }
         }
     }
 }

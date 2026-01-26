@@ -125,11 +125,14 @@
                             }
                         },
                         "AbyssCrackGoFinishLeftAndRight": {
-                            "param": {
-                                "roi" : [392,402,207,102],
-                                "template": [
-                                    "Abyss/深入裂缝左移动后坐标点.png"
-                                ]
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "roi" : [392,402,207,102],
+                                    "template": [
+                                        "Abyss/深入裂缝左移动后坐标点.png"
+                                    ]
+                                }
                             }
                         },
                         "AbyssRoomSelectLv": {
@@ -156,11 +159,14 @@
                             }
                         },
                         "AbyssCrackGoFinishLeftAndRight": {
-                            "param": {
-                                "roi" : [392,402,207,102],
-                                "template": [
-                                    "Abyss/深入裂缝左移动后坐标点.png"
-                                ]
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "roi" : [392,402,207,102],
+                                    "template": [
+                                        "Abyss/深入裂缝左移动后坐标点.png"
+                                    ]
+                                }
                             }
                         },
                         "AbyssRoomSelectLv": {
@@ -177,18 +183,24 @@
                     "name": "100级",
                     "pipeline_override": {
                         "AbyssCrackMoveLeftAndRight": {
-                            "param": {
-                                "begin" : [356,842,1,1],
-                                "end" : [400,841,1,1],
-                                "duration": 500
+                            "action": {
+                                "type": "Swipe",
+                                "param": {
+                                    "begin" : [356,842,1,1],
+                                    "end" : [400,841,1,1],
+                                    "duration": 500
+                                }
                             }
                         },
                         "AbyssCrackGoFinishLeftAndRight": {
-                            "param": {
-                                "roi" : [394,381,255,179],
-                                "template": [
-                                    "Abyss/深入裂缝右移动后坐标点.png"
-                                ]
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "roi" : [394,381,255,179],
+                                    "template": [
+                                        "Abyss/深入裂缝右移动后坐标点.png"
+                                    ]
+                                }
                             }
                         },
                         "AbyssRoomSelectLv": {
@@ -210,18 +222,24 @@
                     "name": "95级",
                     "pipeline_override": {
                         "AbyssCrackMoveLeftAndRight": {
-                            "param": {
-                                "begin" : [356,842,1,1],
-                                "end" : [400,841,1,1],
-                                "duration": 500
+                            "action": {
+                                "type": "Swipe",
+                                "param": {
+                                    "begin" : [356,842,1,1],
+                                    "end" : [400,841,1,1],
+                                    "duration": 500
+                                }
                             }
                         },
                         "AbyssCrackGoFinishLeftAndRight": {
-                            "param": {
-                                "roi" : [394,381,255,179],
-                                "template": [
-                                    "Abyss/深入裂缝右移动后坐标点.png"
-                                ]
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "roi" : [394,381,255,179],
+                                    "template": [
+                                        "Abyss/深入裂缝右移动后坐标点.png"
+                                    ]
+                                }
                             }
                         },
                         "AbyssRoomSelectLv": {
@@ -243,18 +261,24 @@
                     "name": "90级",
                     "pipeline_override": {
                         "AbyssCrackMoveLeftAndRight": {
-                            "param": {
-                                "begin" : [356,842,1,1],
-                                "end" : [400,841,1,1],
-                                "duration": 500
+                            "action": {
+                                "type": "Swipe",
+                                "param": {
+                                    "begin" : [356,842,1,1],
+                                    "end" : [400,841,1,1],
+                                    "duration": 500
+                                }
                             }
                         },
                         "AbyssCrackGoFinishLeftAndRight": {
-                            "param": {
-                                "roi" : [394,381,255,179],
-                                "template": [
-                                    "Abyss/深入裂缝右移动后坐标点.png"
-                                ]
+                            "recognition": {
+                                "type": "TemplateMatch",
+                                "param": {
+                                    "roi" : [394,381,255,179],
+                                    "template": [
+                                        "Abyss/深入裂缝右移动后坐标点.png"
+                                    ]
+                                }
                             }
                         },
                         "AbyssRoomSelectLv": {

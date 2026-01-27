@@ -105,8 +105,8 @@
         "post_wait_freezes": 500,
         "next": [
             "AbyssDungeon",
-            "AbyssInvasionStart",
             "BattleFlow",
+            "AbyssInvasionStart",
             "[JumpBack]RestoreMp"
         ]
     },
@@ -123,7 +123,7 @@
                 ],
                 "end": [
                     327,
-                    698,
+                    746,
                     64,
                     59
                 ],

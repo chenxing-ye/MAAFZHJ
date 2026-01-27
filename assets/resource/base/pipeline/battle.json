@@ -67,7 +67,7 @@
                 ],
                 "end": [
                     341,
-                    605,
+                    763,
                     26,
                     20
                 ],
@@ -160,6 +160,7 @@
                 ]
             }
         },
+        "timeout": 50000,
         "next": [
             "[JumpBack]BattleNext",
             "[JumpBack]RestoreMp",
@@ -174,7 +175,7 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "roi" : [261,1037,195,48],
+                "roi" : [240, 1087, 235, 66],
                 "template": [
                     "Common/开始战斗.png"
                 ]
@@ -215,11 +216,14 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi" : [88,1153,265,101],
+                "roi": [
+                    92,
+                    1183,
+                    151,
+                    60
+                ],
                 "expected": [
-                    "下一关",
-                    "再次",
-                    "挑战"
+                    "下一关"
                 ]
             }
         },

@@ -365,7 +365,7 @@
                             "recognition": {
                                 "type": "TemplateMatch",
                                 "param": {
-                                    "roi" : [0,401,719,781],
+                                    "roi" : [0, 142, 718, 1063],
                                     "threshold": 0.9,
                                     "template": [
                                         "Gameplay/史莱姆宝库.png"
@@ -389,6 +389,22 @@
                                     ]
                                 }
                             }
+                        },
+                        "BattleNext": {
+                            "doc": "挑战下一关",
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi" : [150, 1182, 181, 53],
+                                    "expected": [
+                                        "再次",
+                                        "挑战"
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "Click"
+                            }
                         }
                     }
                 },
@@ -400,7 +416,7 @@
                             "recognition": {
                                 "type": "TemplateMatch",
                                 "param": {
-                                    "roi" : [0,401,719,781],
+                                    "roi" : [0, 142, 718, 1063],
                                     "threshold": 0.9,
                                     "template": [
                                         "Gameplay/火元素试炼.png"
@@ -424,6 +440,22 @@
                                     ]
                                 }
                             }
+                        },
+                        "BattleNext": {
+                            "doc": "挑战下一关",
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi" : [150, 1182, 181, 53],
+                                    "expected": [
+                                        "再次",
+                                        "挑战"
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "Click"
+                            }
                         }
                     }
                 },
@@ -435,7 +467,7 @@
                             "recognition": {
                                 "type": "TemplateMatch",
                                 "param": {
-                                    "roi" : [0,401,719,781],
+                                    "roi" : [0, 142, 718, 1063],
                                     "threshold": 0.9,
                                     "template": [
                                         "Gameplay/风元素试炼.png"
@@ -459,6 +491,22 @@
                                     ]
                                 }
                             }
+                        },
+                        "BattleNext": {
+                            "doc": "挑战下一关",
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi" : [150, 1182, 181, 53],
+                                    "expected": [
+                                        "再次",
+                                        "挑战"
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "Click"
+                            }
                         }
                     }
                 },
@@ -470,7 +518,7 @@
                             "recognition": {
                                 "type": "TemplateMatch",
                                 "param": {
-                                    "roi" : [0,401,719,781],
+                                    "roi" : [0, 142, 718, 1063],
                                     "threshold": 0.9,
                                     "template": [
                                         "Gameplay/水元素试炼.png"
@@ -494,6 +542,22 @@
                                     ]
                                 }
                             }
+                        },
+                        "BattleNext": {
+                            "doc": "挑战下一关",
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi" : [150, 1182, 181, 53],
+                                    "expected": [
+                                        "再次",
+                                        "挑战"
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "Click"
+                            }
                         }
                     }
                 },
@@ -505,7 +569,7 @@
                             "recognition": {
                                 "type": "TemplateMatch",
                                 "param": {
-                                    "roi" : [0,401,719,781],
+                                    "roi" : [0, 142, 718, 1063],
                                     "threshold": 0.9,
                                     "template": [
                                         "Gameplay/土元素试炼.png"
@@ -528,6 +592,22 @@
                                         "^\\D*((?<!100)[1-9][0-9]{2,})$"
                                     ]
                                 }
+                            }
+                        },
+                        "BattleNext": {
+                            "doc": "挑战下一关",
+                            "recognition": {
+                                "type": "OCR",
+                                "param": {
+                                    "roi" : [150, 1182, 181, 53],
+                                    "expected": [
+                                        "再次",
+                                        "挑战"
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "Click"
                             }
                         }
                     }

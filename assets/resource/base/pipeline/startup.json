@@ -117,6 +117,21 @@
             "type": "Click"
         }
     },
+    "BackChatButton": {
+        "doc": "点击返回上一级按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": [
+                    "StartUp/聊天返回按钮__16_1167_78_69__0_1117_144_163.png"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        }
+    },
     "HomeButton": {
         "doc": "点击返回主界面按钮",
         "recognition": {

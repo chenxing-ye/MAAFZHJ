@@ -12,6 +12,9 @@
             "[JumpBack]CloseItemMain",
             "[JumpBack]RoomBattleFinish",
             "[JumpBack]SelectAssistMain",
+            "[JumpBack]BackChatButton",
+            "[JumpBack]AbyssRoomTargetLv",
+            "[JumpBack]AbyssRoomSelectLv",
             "AbyssClick2"
         ]
     },
@@ -181,10 +184,10 @@
         "action": {
             "type": "Click"
         },
+        "timeout": 1000,
         "next": [
             "[JumpBack]CloseItemMain",
             "AbyssRoomTargetLv",
-            "AbyssRoomStart",
             "[JumpBack]AbyssRoomSelectLv"
         ]
     },
@@ -210,10 +213,10 @@
         "action": {
             "type": "Click"
         },
+        "timeout": 1000,
         "next": [
             "[JumpBack]CloseItemMain",
             "AbyssRoomTargetLv",
-            "AbyssRoomStart1",
             "[JumpBack]AbyssRoomSelectLv"
         ]
     },
@@ -234,9 +237,9 @@
             },
             "pre_delay": 150
         },
+        "timeout": 1000,
         "next": [
-            "AbyssCreateRoom",
-            "AbyssRoomTargetLv"
+            "AbyssCreateRoom"
         ]
     },
     // 200 "roi" : [233,139,317,163]
@@ -261,6 +264,7 @@
                 ]
             }
         },
+        "timeout": 1000,
         "action": {
             "type": "Click"
         }
@@ -290,11 +294,12 @@
         "action": {
             "type": "Click"
         },
+        "timeout": 1000,
+        "post_wait_freezes": 500,
         "next": [
             "AbyssRoomDungeonConfig",
             "[JumpBack]SelectAssistMain",
-            "[JumpBack]CloseItemMain",
-            "AbyssCreateRoom"
+            "[JumpBack]CloseItemMain"
         ]
     },
     "AbyssRoomDungeonConfig": {
@@ -316,10 +321,10 @@
         "action": {
             "type": "Click"
         },
+        "timeout": 1000,
         "next": [
             "[JumpBack]CloseItemMain",
             "RoomBattleFlow",
-            "AbyssRoomDungeonConfig",
             "AbyssRoomDungeonStart"
         ]
     },
@@ -343,10 +348,11 @@
         "action": {
             "type": "Click"
         },
+        "timeout": 1000,
+        "post_wait_freezes": 500,
         "next": [
             "[JumpBack]CloseItemMain",
             "AbyssRoomDungeonStartConfig",
-            "[JumpBack]AbyssRoomStart1",
             "RoomBattleFlow"
         ]
     },
@@ -366,13 +372,13 @@
                 ]
             }
         },
+        "timeout": 1000,
         "action": {
             "type": "Click"
         },
         "next": [
             "RoomBattleFlow",
-            "AbyssRoomDungeonConfig",
-            "AbyssRoomDungeonStart"
+            "AbyssRoomDungeonConfig"
         ]
     }
 }

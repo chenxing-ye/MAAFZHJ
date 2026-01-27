@@ -2,7 +2,8 @@
   "AutoPlayTask": {
     "doc": "开启玩法系列任务",
     "next": [
-      "PlayClick"
+      "PlayClick",
+      "[JumpBack]BattleFlow"
     ]
   },
   "PlayClick": {
@@ -29,7 +30,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "roi" : [0,401,719,781],
+        "roi" : [0, 142, 718, 1063],
         "threshold": 0.9,
         "template": [
           "Gameplay/火元素试炼.png"
@@ -91,7 +92,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "roi" : [261,1037,195,48],
+        "roi" : [240, 1087, 235, 66],
         "template": [
           "Common/开始战斗.png"
         ]

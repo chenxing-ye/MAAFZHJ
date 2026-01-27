@@ -2,14 +2,17 @@
     "AbyssRoomTask": {
         "doc": "开启深渊房间任务",
         "next": [
-            "AbyssClick2",
             "[JumpBack]RoomBattleFlow",
             "[JumpBack]AbyssRoomDungeonStart",
             "[JumpBack]AbyssRoomDungeonStartConfig",
             "[JumpBack]AbyssRoomDungeonConfig",
             "[JumpBack]AbyssCreateRoom",
             "[JumpBack]AbyssRoomStart",
-            "[JumpBack]AbyssRoomStart1"
+            "[JumpBack]AbyssRoomStart1",
+            "[JumpBack]CloseItemMain",
+            "[JumpBack]RoomBattleFinish",
+            "[JumpBack]SelectAssistMain",
+            "AbyssClick2"
         ]
     },
     "AbyssClick2": {
@@ -173,13 +176,13 @@
             }
         },
         "focus": {
-            "Node.Recognition.Failed": "未识别到挑战按钮 请自行到怪的位置"
+            "Node.Recognition.Succeeded": "识别到挑战按钮 开始挑战"
         },
-        "post_wait_freezes": 500,
         "action": {
             "type": "Click"
         },
         "next": [
+            "[JumpBack]CloseItemMain",
             "AbyssRoomTargetLv",
             "AbyssRoomStart",
             "[JumpBack]AbyssRoomSelectLv"
@@ -202,16 +205,15 @@
             }
         },
         "focus": {
-            "Node.Recognition.Failed": "未识别到挑战按钮 请自行到怪的位置"
+            "Node.Recognition.Succeeded": "识别到挑战按钮 开始挑战"
         },
-        "pre_delay": 150,
-        "post_wait_freezes": 500,
         "action": {
             "type": "Click"
         },
         "next": [
+            "[JumpBack]CloseItemMain",
             "AbyssRoomTargetLv",
-            "AbyssRoomStart",
+            "AbyssRoomStart1",
             "[JumpBack]AbyssRoomSelectLv"
         ]
     },
@@ -290,10 +292,8 @@
         },
         "next": [
             "AbyssRoomDungeonConfig",
-            "[JumpBack]SelectAssistMain"
-        ],
-        "timeout": 25000,
-        "on_error": [
+            "[JumpBack]SelectAssistMain",
+            "[JumpBack]CloseItemMain",
             "AbyssCreateRoom"
         ]
     },
@@ -317,6 +317,7 @@
             "type": "Click"
         },
         "next": [
+            "[JumpBack]CloseItemMain",
             "RoomBattleFlow",
             "AbyssRoomDungeonConfig",
             "AbyssRoomDungeonStart"
@@ -343,13 +344,10 @@
             "type": "Click"
         },
         "next": [
+            "[JumpBack]CloseItemMain",
             "AbyssRoomDungeonStartConfig",
             "[JumpBack]AbyssRoomStart1",
-            "[JumpBack]RoomBattleFlow"
-        ],
-        "timeout": 25000,
-        "on_error": [
-            "AbyssRoomDungeonStart"
+            "RoomBattleFlow"
         ]
     },
     "AbyssRoomDungeonStartConfig": {

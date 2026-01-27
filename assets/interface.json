@@ -84,6 +84,25 @@
             "repeat_count": 1
         },
         {
+            "name": "蹭房战斗",
+            "entry": "JoinRoomTask",
+            "option": [
+                "副本",
+                "助战元素属性",
+                "助战优先"
+            ],
+            "pipeline_override": {
+                "SelectAssistTry1": {
+                    "post_wait_freezes": 0
+                },
+                "SelectAssistTry2": {
+                    "post_wait_freezes": 0
+                }
+            },
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
             "name": "结束游戏",
             "entry": "CloseFZHJ"
         }
@@ -797,6 +816,39 @@
                     "post_wait_freezes": "{等待毫秒}"
                 }
             }
-        }
+        },
+        "副本": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "副本1",
+                    "pipeline_type": "string",
+                    "default": "诺维克",
+                    "verify": "^(?!\\s*$).+",
+                    "pattern_msg": "请输入第一优先识别的文字，如诺维克的幻影、诺维克、幻影",
+                    "description": "请输入第一优先识别的文字，如诺维克的幻影、诺维克、幻影"
+                },
+                {
+                    "name": "副本2",
+                    "pipeline_type": "string",
+                    "default": "诺维克",
+                    "verify": "^(?!\\s*$).+",
+                    "pattern_msg": "请输入第二优先识别的文字，如诺维克的幻影、诺维克、幻影",
+                    "description": "请输入第二优先识别的文字，如诺维克的幻影、诺维克、幻影"
+                }
+            ],
+            "pipeline_override": {
+                "JoinRoomSelect": {
+                    "expected": [
+                        "{副本1}"
+                    ]
+                },
+                "JoinRoomSelect1": {
+                    "expected": [
+                        "{副本2}"
+                    ]
+                }
+            }
+        },
     }
 }

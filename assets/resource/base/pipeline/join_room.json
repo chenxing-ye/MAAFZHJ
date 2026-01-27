@@ -1,0 +1,267 @@
+{
+    "JoinRoomTask": {
+        "doc": "蹭房战斗",
+        "timeout": 6000000,
+        "next": [
+            "JoinRoomStartBattle",
+            "[JumpBack]JoinRoomSelect",
+            "[JumpBack]JoinRoomSelect1",
+            "[JumpBack]SelectAssistMain",
+            "[JumpBack]JoinRoomRevive",
+            "[JumpBack]JoinRoomCallAssist",
+            "[JumpBack]JoinRoomLeave",
+            "[JumpBack]JoinRoomReviveButton",
+            "[JumpBack]CloseItemMain",
+            "[JumpBack]RoomBattleFinish",
+            "[JumpBack]RoundSkip",
+            "[JumpBack]ClickBlankContinue",
+            "[JumpBack]JoinRoomFriendApply",
+            "[JumpBack]RestoreMp",
+            "[JumpBack]BattleIng",
+            "JoinRoomRefresh"
+        ]
+    },
+    "JoinRoomTaskRefresh": {
+        "doc": "蹭房战斗",
+        "timeout": 6000000,
+        "next": [
+            "JoinRoomRefresh",
+            "[JumpBack]JoinRoomSelect",
+            "[JumpBack]JoinRoomSelect1",
+            "[JumpBack]SelectAssistMain",
+            "[JumpBack]JoinRoomRevive",
+            "[JumpBack]JoinRoomCallAssist",
+            "[JumpBack]JoinRoomLeave",
+            "[JumpBack]JoinRoomReviveButton",
+            "[JumpBack]CloseItemMain",
+            "[JumpBack]RoomBattleFinish",
+            "[JumpBack]RoundSkip",
+            "[JumpBack]ClickBlankContinue",
+            "[JumpBack]JoinRoomFriendApply",
+            "[JumpBack]RestoreMp",
+            "[JumpBack]BattleIng",
+            "JoinRoomStartBattle"
+        ]
+    },
+    "JoinRoomSelect": {
+        "doc": "选择加入房间",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    173,
+                    708,
+                    396,
+                    490
+                ],
+                "expected": [
+                    "挑战"
+                ]
+            }
+        },
+        "post_wait_freezes": 50,
+        "action": {
+            "type": "Click"
+        }
+    },
+    "JoinRoomSelect1": {
+        "doc": "选择加入房间1",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    173,
+                    474,
+                    396,
+                    724
+                ],
+                "expected": [
+                    "挑战"
+                ]
+            }
+        },
+        "post_wait_freezes": 50,
+        "action": {
+            "type": "Click"
+        }
+    },
+    // 是否复活
+    "JoinRoomRevive": {
+        "doc": "是否复活",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    160,
+                    374,
+                    398,
+                    97
+                ],
+                "expected": [
+                    "秘药",
+                    "复活"
+                ]
+            }
+        },
+        "next": [
+            "JoinRoomCancelRevive"
+        ]
+    },
+    // 取消复活
+    "JoinRoomCancelRevive": {
+        "doc": "取消复活",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    86,
+                    744,
+                    231,
+                    101
+                ],
+                "expected": [
+                    "取消"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        }
+    },
+    // 呼叫支援
+    "JoinRoomCallAssist": {
+        "doc": "呼叫支援",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    235,
+                    913,
+                    256,
+                    88
+                ],
+                "expected": [
+                    "发送"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        }
+    },
+    // 暂离房间
+    "JoinRoomLeave": {
+        "doc": "暂离房间",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    397,
+                    757,
+                    256,
+                    89
+                ],
+                "expected": [
+                    "暂离"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    // 复活按钮
+    "JoinRoomReviveButton": {
+        "doc": "复活按钮",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    219,
+                    1057,
+                    282,
+                    83
+                ],
+                "expected": [
+                    "复活"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    // 好友申请
+    "JoinRoomFriendApply": {
+        "doc": "好友申请",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    73,
+                    831,
+                    252,
+                    75
+                ],
+                "expected": [
+                    "取消"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        }
+    },
+    // 刷新按钮
+    "JoinRoomRefresh": {
+        "doc": "刷新按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    598,
+                    340,
+                    107,
+                    683
+                ],
+                "template": [
+                    "StartUp/刷新按钮__634_381_48_50__584_331_136_150.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "JoinRoomTask"
+        ]
+    },
+    // 开始战斗
+    "JoinRoomStartBattle": {
+        "doc": "开始战斗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    236,
+                    1079,
+                    249,
+                    71
+                ],
+                "expected": [
+                    "开始战斗"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "JoinRoomTaskRefresh"
+        ]
+    }
+}

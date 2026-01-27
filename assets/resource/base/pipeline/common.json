@@ -116,30 +116,6 @@
             "type": "Click"
         },
         "next": [
-            "UseMpSub"
-        ]
-    },
-    "UseMpSub": {
-        "doc": "减少按钮",
-        "recognition": {
-            "type": "TemplateMatch",
-            "param": {
-                "roi": [
-                    81,
-                    641,
-                    145,
-                    133
-                ],
-                "template": [
-                    "Common/减少体力按钮__122_703_29_25__72_653_129_125.png"
-                ]
-            }
-        },
-        "action": {
-            "type": "Click"
-        },
-        "post_wait_freezes": 500,
-        "next": [
             "UseMpConfirm"
         ]
     },

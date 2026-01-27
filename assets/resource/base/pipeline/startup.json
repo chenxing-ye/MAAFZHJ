@@ -221,6 +221,26 @@
             "type": "Click"
         }
     },
+    "CloseItemMain": {
+        "doc": "关闭按钮",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    535,
+                    320,
+                    152,
+                    126
+                ],
+                "template": [
+                    "StartUp/X关闭物品界面__596_356_39_41__546_306_139_141.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
     "MonCard": {
         "doc": "点击月卡领取按钮",
         "recognition": {

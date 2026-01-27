@@ -35,7 +35,7 @@
                     70
                 ],
                 "order_by": "Score",
-                "threshold": 0.9,
+                "threshold": 0.8,
                 "template": [
                     "Battle/助战火元素__102_302_50_48__52_252_150_148.png"
                 ]
@@ -167,8 +167,27 @@
             "[JumpBack]RoundSkip",
             "[JumpBack]ClickBlankContinue",
             "[JumpBack]SelectAssistMain",
-            "ConfirmToStartFight"
+            "ConfirmToStartFight",
+            "[JumpBack]BattleIng"
         ]
+    },
+    "BattleIng": {
+        "doc": "战斗中",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    493,
+                    4,
+                    226,
+                    67
+                ],
+                "expected": [
+                    "回合",
+                    "剩余时间"
+                ]
+            }
+        }
     },
     "ConfirmToStartFight": {
         "doc": "开始挑战",
@@ -252,7 +271,8 @@
         "next": [
             "RoomBattleFinish",
             "[JumpBack]RoundSkip",
-            "[JumpBack]ClickBlankContinue"
+            "[JumpBack]ClickBlankContinue",
+            "[JumpBack]BattleIng"
         ]
     },
     "RoomBattleFinish": {

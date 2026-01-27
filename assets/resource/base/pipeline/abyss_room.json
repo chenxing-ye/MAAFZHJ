@@ -239,19 +239,23 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "roi" : [413,1016,200,77],
+                "roi" : [397,1013,221,80],
                 "template": [
                     "Common/创建房间按钮.png"
                 ]
             }
         },
+        "target": [526, 1029, 66, 48],
         "action": {
             "type": "Click"
         },
         "next": [
             "AbyssRoomDungeonConfig",
-            "AbyssCreateRoom",
             "[JumpBack]SelectAssistMain"
+        ],
+        "timeout": 25000,
+        "on_error": [
+            "AbyssCreateRoom"
         ]
     },
     "AbyssRoomDungeonConfig": {
@@ -300,8 +304,11 @@
             "type": "Click"
         },
         "next": [
-            "RoomBattleFlow",
             "AbyssRoomDungeonStartConfig",
+            "[JumpBack]RoomBattleFlow"
+        ],
+        "timeout": 25000,
+        "on_error": [
             "AbyssRoomDungeonStart"
         ]
     },

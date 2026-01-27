@@ -12,7 +12,7 @@
             "[JumpBack]AbyssRoomStart1"
         ]
     },
-    "AbyssClick2":{
+    "AbyssClick2": {
         "doc": "点击入侵深渊",
         "recognition": {
             "type": "OCR",
@@ -42,7 +42,12 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi" : [586,1130,123,135],
+                "roi": [
+                    586,
+                    1130,
+                    123,
+                    135
+                ],
                 "expected": [
                     "深入",
                     "裂缝"
@@ -62,7 +67,12 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "roi" : [251,395,270,122],
+                "roi": [
+                    251,
+                    395,
+                    270,
+                    122
+                ],
                 "template": [
                     "Abyss/深入裂缝完成标注点.png"
                 ]
@@ -83,8 +93,18 @@
         "action": {
             "type": "Swipe",
             "param": {
-                "begin" : [356,842,1,1],
-                "end" : [312,841,1,1],
+                "begin": [
+                    356,
+                    842,
+                    1,
+                    1
+                ],
+                "end": [
+                    312,
+                    841,
+                    1,
+                    1
+                ],
                 "duration": 500
             }
         },
@@ -99,7 +119,12 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "roi" : [392,402,207,102],
+                "roi": [
+                    392,
+                    402,
+                    207,
+                    102
+                ],
                 "template": [
                     "Abyss/深入裂缝左移动后坐标点.png"
                 ]
@@ -110,7 +135,6 @@
             "[JumpBack]AbyssCrackMove"
         ]
     },
-
     "AbyssCrackMove": {
         "doc": "移动寻找挑战",
         "action": {
@@ -137,7 +161,12 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi" : [464,587,256,303],
+                "roi": [
+                    464,
+                    587,
+                    256,
+                    303
+                ],
                 "expected": [
                     "挑战"
                 ]
@@ -239,13 +268,23 @@
         "recognition": {
             "type": "TemplateMatch",
             "param": {
-                "roi" : [397,1013,221,80],
+                "roi": [
+                    397,
+                    1013,
+                    221,
+                    80
+                ],
                 "template": [
                     "Common/创建房间按钮.png"
                 ]
             }
         },
-        "target": [526, 1029, 66, 48],
+        "target": [
+            526,
+            1029,
+            66,
+            48
+        ],
         "action": {
             "type": "Click"
         },
@@ -305,6 +344,7 @@
         },
         "next": [
             "AbyssRoomDungeonStartConfig",
+            "[JumpBack]AbyssRoomStart1",
             "[JumpBack]RoomBattleFlow"
         ],
         "timeout": 25000,

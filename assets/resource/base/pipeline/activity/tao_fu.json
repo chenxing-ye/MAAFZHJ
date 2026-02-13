@@ -1,0 +1,121 @@
+{
+    "TaoFuTask": {
+        "doc": "开启桃符任务",
+        "next": [
+            "TaoFuDungeonConfig",
+            "TaoFuInvasionStart",
+            "TaoFuInvasionClick",
+            "TaoFuClick",
+            "[JumpBack]BattleFlow",
+            "[JumpBack]ReturnMain"
+        ]
+    },
+    "TaoFuClick": {
+        "doc": "点击桃符",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    586,
+                    543,
+                    140,
+                    408
+                ],
+                "expected": [
+                    "桃符",
+                    "传说"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "TaoFuInvasionClick",
+            "TaoFuClick"
+        ]
+    },
+    "TaoFuInvasionClick": {
+        "doc": "点击讨伐",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    201,
+                    1127,
+                    130,
+                    66
+                ],
+                "expected": [
+                    "挑战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "TaoFuDungeonConfig",
+            "TaoFuInvasionClick",
+            "[JumpBack]SelectAssistMain"
+        ]
+    },
+    "TaoFuInvasionStart": {
+        "doc": "挑战",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    69,
+                    622,
+                    607,
+                    205
+                ],
+                "expected": [
+                    "挑战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "TaoFuDungeonConfig",
+            "BattleFlow",
+            "TaoFuInvasionStart",
+            "[JumpBack]SelectAssistMain",
+            "[JumpBack]RestoreMp"
+        ]
+    },
+    "TaoFuDungeonConfig": {
+        "doc": "桃符副本确定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    122,
+                    997,
+                    466,
+                    179
+                ],
+                "expected": [
+                    "开始",
+                    "战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "BattleFlow",
+            "TaoFuDungeonConfig",
+            "TaoFuInvasionStart",
+            "[JumpBack]SelectAssistMain",
+            "[JumpBack]RestoreMp"
+        ]
+    }
+}

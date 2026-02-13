@@ -92,7 +92,8 @@
     "UseMpAddFlows": {
         "next": [
             "CheckMp",
-            "[JumpBack]UseMpAdd"
+            "[JumpBack]UseMpAdd",
+            "[JumpBack]UseMpConfirm"
         ]
     },
     "UseMpAdd": {
@@ -132,7 +133,8 @@
                     134
                 ],
                 "expected": [
-                    "使用"
+                    "使用",
+                    "确定"
                 ]
             }
         },
@@ -209,5 +211,7 @@
         "action": {
             "type": "Click"
         }
+    },
+    "EmptyTask": {
     }
 }

@@ -1,0 +1,205 @@
+{
+    "TaoFuRoomTask": {
+        "doc": "开启深渊房间任务",
+        "next": [
+            "[JumpBack]RoomBattleFlow",
+            "[JumpBack]TaoFuRoomDungeonStart",
+            "[JumpBack]TaoFuRoomDungeonStartConfig",
+            "[JumpBack]TaoFuRoomDungeonConfig",
+            "[JumpBack]TaoFuCreateRoom",
+            "[JumpBack]TaoFuRoomStart",
+            "[JumpBack]CloseItemMain",
+            "[JumpBack]RoomBattleFinish",
+            "[JumpBack]SelectAssistMain",
+            "[JumpBack]BackChatButton",
+            "[JumpBack]RestoreMp",
+            "[JumpBack]TaoFuClick2"
+        ]
+    },
+    "TaoFuClick2": {
+        "doc": "点击桃符",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    586,
+                    543,
+                    140,
+                    408
+                ],
+                "expected": [
+                    "桃符",
+                    "传说"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "TaoFuCrackClick",
+            "TaoFuClick2"
+        ]
+    },
+    "TaoFuCrackClick": {
+        "doc": "点击桃符讨伐",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    506,
+                    1103,
+                    167,
+                    77
+                ],
+                "expected": [
+                    "挑战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "TaoFuCreateRoom",
+            "TaoFuCrackClick"
+        ]
+    },
+    "TaoFuRoomStart": {
+        "doc": "挑战",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    69,
+                    622,
+                    607,
+                    205
+                ],
+                "expected": [
+                    "挑战"
+                ]
+            }
+        },
+        "focus": {
+            "Node.Recognition.Succeeded": "识别到挑战按钮 开始挑战"
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": 1000,
+        "next": [
+            "[JumpBack]CloseItemMain",
+            "TaoFuCreateRoom"
+        ]
+    },
+    "TaoFuCreateRoom": {
+        "doc": "创建桃符房间",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    397,
+                    1013,
+                    221,
+                    80
+                ],
+                "template": [
+                    "Common/创建房间按钮.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": 1000,
+        "post_wait_freezes": 500,
+        "next": [
+            "TaoFuRoomDungeonConfig",
+            "[JumpBack]SelectAssistMain",
+            "[JumpBack]CloseItemMain",
+            "[JumpBack]RestoreMp",
+            "TaoFuRoomStart"
+        ]
+    },
+    "TaoFuRoomDungeonConfig": {
+        "doc": "桃符副本确定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    270,
+                    1011,
+                    186,
+                    68
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": 1000,
+        "next": [
+            "[JumpBack]CloseItemMain",
+            "RoomBattleFlow",
+            "TaoFuRoomDungeonStart"
+        ]
+    },
+    "TaoFuRoomDungeonStart": {
+        "doc": "桃符副本开始战斗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    456,
+                    1187,
+                    192,
+                    55
+                ],
+                "expected": [
+                    "开始",
+                    "战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "timeout": 1000,
+        "post_wait_freezes": 500,
+        "next": [
+            "[JumpBack]CloseItemMain",
+            "TaoFuRoomDungeonStartConfig",
+            "RoomBattleFlow"
+        ]
+    },
+    "TaoFuRoomDungeonStartConfig": {
+        "doc": "桃符副本开始战斗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    386,
+                    778,
+                    264,
+                    132
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "timeout": 1000,
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "RoomBattleFlow",
+            "TaoFuRoomDungeonConfig"
+        ]
+    }
+}

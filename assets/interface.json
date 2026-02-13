@@ -72,6 +72,17 @@
             "repeat_count": 1
         },
         {
+            "name": "桃符刷小怪",
+            "entry": "TaoFuTask",
+            "option": [
+                "助战元素属性",
+                "助战优先"
+            ],
+            "doc": "[color:blue][size:20]需配置好队伍 助战优先会在前三中优选匹配对应文字[/size][/color]",
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
             "name": "自定义识别并点击",
             "entry": "CommonRecognition",
             "option": [
@@ -80,6 +91,20 @@
                 "是否循环",
                 "点击后等待"
             ],
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
+            "name": "自动吃体力",
+            "entry": "EmptyTask",
+            "pipeline_override": {
+                "EmptyTask": {
+                    "next": [
+                        "[JumpBack]RestoreMp",
+                        "EmptyTask"
+                    ]
+                }
+            },
             "repeatable": true,
             "repeat_count": 1
         },

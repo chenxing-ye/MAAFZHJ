@@ -13,6 +13,7 @@
             "[JumpBack]HomeButton",
             "[JumpBack]Download",
             "[JumpBack]TaskFinishConfig",
+            "[JumpBack]ClickCancel",
             "[JumpBack]StartFZHJ"
         ]
     },
@@ -62,6 +63,7 @@
             "[JumpBack]MonCard",
             "[JumpBack]BackButton",
             "[JumpBack]TaskFinishConfig",
+            "[JumpBack]ClickCancel",
             "[JumpBack]HomeButton"
         ]
     },
@@ -75,6 +77,7 @@
             "[JumpBack]BackButton",
             "[JumpBack]StartGame",
             "[JumpBack]TaskFinishConfig",
+            "[JumpBack]ClickCancel",
             "[JumpBack]MonCard"
         ]
     },
@@ -174,6 +177,27 @@
                 "expected": [
                     "点击空白",
                     "区域关闭"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000
+    },
+    "ClickCancel": {
+        "doc": "点击取消按钮",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    93,
+                    719,
+                    244,
+                    74
+                ],
+                "expected": [
+                    "取消"
                 ]
             }
         },

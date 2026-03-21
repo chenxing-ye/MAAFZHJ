@@ -1,0 +1,80 @@
+{
+    "DailyTask": {
+        "next": [
+            "DailyClick",
+            "[JumpBack]ReturnMain"
+        ]
+    },
+    "DailyClick": {
+        "doc": "点击每日",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    603,
+                    554,
+                    110,
+                    337
+                ],
+                "expected": [
+                    "每日",
+                    "任务"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "timeout": 3000,
+        "next": [
+            "DailyTaskFinish",
+            "DailyClick"
+        ]
+    },
+    "DailyTaskFinish": {
+        "doc": "完成每日任务",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    444,
+                    471,
+                    192,
+                    604
+                ],
+                "expected": [
+                    "领取"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "DailyRewardGain"
+        ],
+        "timeout": 3000
+    },
+    "DailyRewardGain": {
+        "doc": "领取每日奖励",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    518,
+                    319,
+                    132,
+                    136
+                ],
+                "template": [
+                    "Daily/每日任务奖励按钮__447_399_37_35__397_349_137_135.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}

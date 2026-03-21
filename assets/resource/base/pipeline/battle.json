@@ -272,8 +272,121 @@
             "RoomBattleFinish",
             "[JumpBack]RoundSkip",
             "[JumpBack]ClickBlankContinue",
-            "[JumpBack]BattleIng"
+            "[JumpBack]BattleIng",
+            "[JumpBack]RoomBattleReviveMain",
+            "[JumpBack]RoomBattleCallSupport",
+            "[JumpBack]ClickBlank"
         ]
+    },
+    "RoomBattleCallSupportFlow": {
+        "doc": "房间战斗呼叫支援流程",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    8,
+                    1221,
+                    238,
+                    50
+                ],
+                "expected": [
+                    "发送",
+                    "多人",
+                    "支援",
+                    "请求"
+                ]
+            }
+        },
+        "next": [
+            "RoomBattleCallSupport",
+            "[JumpBack]RoomBattleDirectCallSupport"
+        ],
+        "max_hit": 1
+    },
+    "RoomBattleDirectCallSupport": {
+        "doc": "房间战斗直接呼叫支援",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    8,
+                    1221,
+                    238,
+                    50
+                ],
+                "expected": [
+                    "发送",
+                    "多人",
+                    "支援",
+                    "请求"
+                ]
+            }
+        },
+        "post_wait_freezes": 1000,
+        "action": {
+            "type": "Click"
+        }
+    },
+    "RoomBattleCallSupport": {
+        "doc": "房间战斗发送呼叫支援",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    232,
+                    919,
+                    257,
+                    76
+                ],
+                "expected": [
+                    "发送"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        }
+    },
+    "RoomBattleReviveMain": {
+        "doc": "房间战斗复活主界面",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    401,
+                    752,
+                    244,
+                    92
+                ],
+                "expected": [
+                    "复活"
+                ]
+            }
+        },
+        "next": [
+            "RoomBattleReviveCancel"
+        ]
+    },
+    "RoomBattleReviveCancel": {
+        "doc": "房间战斗复活取消",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    75,
+                    759,
+                    245,
+                    92
+                ],
+                "expected": [
+                    "取消"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
     },
     "RoomBattleFinish": {
         "doc": "房间战斗结束",

@@ -1,0 +1,131 @@
+{
+    "GuildShopTask": {
+        "next": [
+            "GuildShopButton",
+            "GuildClick",
+            "[JumpBack]ReturnMain"
+        ]
+    },
+    "GuildShopButton": {
+        "doc": "公会商店按钮",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    12,
+                    761,
+                    75,
+                    97
+                ],
+                "expected": [
+                    "商店"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "GuildShopMain",
+            "GuildShopButton"
+        ]
+    },
+    "GuildShopMain": {
+        "doc": "公会商店主界面",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    349,
+                    507,
+                    142,
+                    59
+                ],
+                "expected": [
+                    "公会",
+                    "商店"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "[JumpBack]GuildShopBuy",
+            "[JumpBack]ClickBlank"
+        ],
+        "timeout": 3000
+    },
+    "GuildShopBuy": {
+        "doc": "公会商店购买商品",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    153,
+                    559,
+                    168,
+                    260
+                ],
+                "expected": [
+                    "星间",
+                    "通信"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "GuildShopBuyClick",
+            "GuildShopBuy"
+        ],
+        "max_hit": 15
+    },
+    "GuildShopBuyClick": {
+        "doc": "公会商店购买商品",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    153,
+                    559,
+                    168,
+                    260
+                ],
+                "template": [
+                    "Guild/公会货币__193_759_34_25__143_709_134_125.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "GuildShopBuyConfirm",
+            "GuildShopBuyClick"
+        ]
+    },
+    "GuildShopBuyConfirm": {
+        "doc": "公会商店购买商品确认",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    433,
+                    735,
+                    74,
+                    49
+                ],
+                "template": [
+                    "Guild/公会货币确认购买__467_741_31_31__417_691_131_131.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    }
+}

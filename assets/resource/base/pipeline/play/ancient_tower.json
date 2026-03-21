@@ -1,0 +1,176 @@
+{
+    "AncientTowerTask": {
+        "doc": "开启古代塔任务",
+        "next": [
+            "AncientTowerClick",
+            "[JumpBack]ReturnMain"
+        ]
+    },
+    "AncientTowerClick": {
+        "doc": "点击古代塔",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    613,
+                    501,
+                    103,
+                    419
+                ],
+                "expected": [
+                    "古代",
+                    "之塔"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "AncientTowerBoxClick",
+            "AncientTowerClick"
+        ]
+    },
+    "AncientTowerBoxClick": {
+        "doc": "点击古代塔盒子",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    412,
+                    999,
+                    266,
+                    236
+                ],
+                "template": [
+                    "Play/古代塔拖车icon__521_1102_102_87__471_1052_202_187.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "AncientTowerRewardQuickHas"
+        ],
+        "timeout": 3000,
+        "on_error": [
+            "AncientTowerRewardGet"
+        ]
+    },
+    "AncientTowerRewardQuickHas": {
+        "doc": "快速奖励可领",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    60,
+                    996,
+                    281,
+                    146
+                ],
+                "expected": [
+                    "1"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "AncientTowerRewardQuick"
+        ]
+    },
+    "AncientTowerRewardQuick": {
+        "doc": "快速奖励",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    60,
+                    996,
+                    281,
+                    146
+                ],
+                "expected": [
+                    "快速",
+                    "收获"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "AncientTowerRewardGet",
+            "[JumpBack]AncientTowerRewardQuickGet",
+            "[JumpBack]AncientTowerRewardQuickCancel",
+            "[JumpBack]ClickBlank"
+        ]
+    },
+    "AncientTowerRewardQuickGet": {
+        "doc": "快速奖励",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    88,
+                    705,
+                    549,
+                    167
+                ],
+                "expected": [
+                    "快速",
+                    "收获"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "AncientTowerRewardQuickCancel": {
+        "doc": "快速奖励",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    88,
+                    705,
+                    549,
+                    167
+                ],
+                "expected": [
+                    "取消"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "AncientTowerRewardGet": {
+        "doc": "快速奖励",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    366,
+                    1020,
+                    303,
+                    101
+                ],
+                "expected": [
+                    "收获"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    }
+}

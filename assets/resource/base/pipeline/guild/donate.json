@@ -1,0 +1,124 @@
+{
+    "DonateTask": {
+        "doc": "开启捐献任务",
+        "next": [
+            "GuildClick",
+            "[JumpBack]ReturnMain"
+        ]
+    },
+    "DonateGuildClick": {
+        "doc": "点击30",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    121,
+                    76,
+                    110,
+                    46
+                ],
+                "expected": [
+                    "30"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "DonateMainClick",
+            "DonateGuildClick"
+        ]
+    },
+    "DonateMainClick": {
+        "doc": "点击捐献",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    515,
+                    193,
+                    163,
+                    119
+                ],
+                "expected": [
+                    "捐献"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "DonateMain",
+            "DonateMainClick"
+        ]
+    },
+    "DonateFinish": {
+        "doc": "捐献完成",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    236,
+                    834,
+                    254,
+                    54
+                ],
+                "expected": [
+                    "贡",
+                    "献"
+                ]
+            }
+        },
+        "inverse": true,
+        "post_wait_freezes": 500
+    },
+    "DonateMain": {
+        "doc": "捐献主界面",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    258,
+                    211,
+                    245,
+                    59
+                ],
+                "expected": [
+                    "贡",
+                    "献"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "DonateFinish",
+            "[JumpBack]DonateClick"
+        ]
+    },
+    "DonateClick": {
+        "doc": "捐献",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    260,
+                    891,
+                    226,
+                    63
+                ],
+                "expected": [
+                    "捐",
+                    "献"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    }
+}

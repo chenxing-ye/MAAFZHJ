@@ -7,10 +7,12 @@
             "HomeFlag",
             "StartGame",
             "[JumpBack]ClickBlank",
+            "[JumpBack]ClickBlank2",
             "[JumpBack]MonCard",
             "[JumpBack]BackButton",
             "[JumpBack]HomeButton",
             "[JumpBack]Download",
+            "[JumpBack]TaskFinishConfig",
             "[JumpBack]StartFZHJ"
         ]
     },
@@ -56,8 +58,10 @@
             "HomeFlag",
             "StartGame",
             "[JumpBack]ClickBlank",
+            "[JumpBack]ClickBlank2",
             "[JumpBack]MonCard",
             "[JumpBack]BackButton",
+            "[JumpBack]TaskFinishConfig",
             "[JumpBack]HomeButton"
         ]
     },
@@ -66,9 +70,11 @@
         "next": [
             "HomeFlagCloseReturnMain",
             "[JumpBack]ClickBlank",
+            "[JumpBack]ClickBlank2",
             "[JumpBack]HomeButton",
             "[JumpBack]BackButton",
             "[JumpBack]StartGame",
+            "[JumpBack]TaskFinishConfig",
             "[JumpBack]MonCard"
         ]
     },
@@ -176,6 +182,28 @@
         },
         "post_delay": 1000
     },
+    "ClickBlank2": {
+        "doc": "点击空白区域关闭",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    177,
+                    1179,
+                    358,
+                    86
+                ],
+                "expected": [
+                    "点击空白",
+                    "区域关闭"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 1000
+    },
     "ClickBlankContinue": {
         "doc": "点击空白处继续",
         "recognition": {
@@ -229,6 +257,26 @@
                 ],
                 "expected": [
                     "确认"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "TaskFinishConfig": {
+        "doc": "任务完成确定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    251,
+                    1165,
+                    212,
+                    81
+                ],
+                "expected": [
+                    "确定"
                 ]
             }
         },

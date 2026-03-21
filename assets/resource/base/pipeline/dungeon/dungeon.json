@@ -1,0 +1,177 @@
+{
+    "DungeonTask": {
+        "next": [
+            "DungeonClick",
+            "[JumpBack]ReturnMain"
+        ]
+    },
+    "DungeonClick": {
+        "doc": "点击副本",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    144,
+                    1142,
+                    457,
+                    121
+                ],
+                "expected": [
+                    "副本"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "DungeonSelectFlow"
+        ]
+    },
+    "DungeonSelectFlow": {
+        "next": [
+            "DungeonSwitchSeriesMain",
+            "[JumpBack]DungeonSwitchSeriesButton"
+        ]
+    },
+    "DungeonSwitchSeriesButton": {
+        "doc": "切换系列",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    608,
+                    205,
+                    96,
+                    125
+                ],
+                "expected": [
+                    "切换"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "DungeonSwitchSeriesClick",
+            "DungeonSwitchSeriesButton"
+        ]
+    },
+    "DungeonSwitchSeriesClick": {
+        "doc": "切换系列",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    301,
+                    275,
+                    379,
+                    529
+                ],
+                "template": [
+                    "Dungeon/神祝之翼切换__375_602_108_89__325_552_208_189.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "DungeonSwitchSeriesMain": {
+        "doc": "切换系列",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    241,
+                    40,
+                    359,
+                    286
+                ],
+                "template": [
+                    "Dungeon/神祝之翼__313_79_172_219__263_29_272_319.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "DungeonSelectTarget",
+            "[JumpBack]DungeonSwipeUp"
+        ]
+    },
+    "DungeonSelectTarget": {
+        "doc": "目标副本",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    260,
+                    324,
+                    228,
+                    738
+                ],
+                "expected": [
+                    "艾莉",
+                    "瑞尔"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "DungeonSelectGo"
+        ]
+    },
+    "DungeonSelectGo": {
+        "doc": "目标副本前往",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": "DungeonSelectTarget",
+                "roi_offset": [
+                    -30,
+                    -30,
+                    300,
+                    150
+                ],
+                "template": [
+                    "Dungeon/副本前往按钮__617_1021_39_47__567_971_139_147.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "DungeonSwipeUp": {
+        "doc": "上滑",
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    616,
+                    824,
+                    65,
+                    60
+                ],
+                "end": [
+                    616,
+                    724,
+                    65,
+                    60
+                ],
+                "duration": 500
+            }
+        }
+    },
+}

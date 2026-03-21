@@ -37,29 +37,6 @@
             "entry": "StartUp"
         },
         {
-            "name": "入侵深渊刷小怪",
-            "entry": "AbyssTask",
-            "option": [
-                "助战元素属性",
-                "助战优先"
-            ],
-            "doc": "[color:blue][size:20]需配置好队伍 助战优先会在前三中优选匹配对应文字[/size][/color]",
-            "repeatable": true,
-            "repeat_count": 1
-        },
-        {
-            "name": "入侵深渊自动创房战斗",
-            "entry": "AbyssRoomTask",
-            "option": [
-                "使徒等级",
-                "助战元素属性",
-                "助战优先"
-            ],
-            "doc": "[color:blue][size:20]需配置好队伍 并自行到达要打的怪处 助战优先会在前三中优选匹配对应文字[/size][/color]",
-            "repeatable": true,
-            "repeat_count": 1
-        },
-        {
             "name": "元素试炼",
             "entry": "AutoPlayTask",
             "option": [
@@ -72,13 +49,75 @@
             "repeat_count": 1
         },
         {
-            "name": "桃符刷小怪",
-            "entry": "TaoFuTask",
+            "name": "古代塔领取",
+            "entry": "AncientTowerTask",
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
+            "name": "公会捐献",
+            "entry": "DonateTask",
+            "pipeline_override": {
+                "GuildClick": {
+                    "next": [
+                        "DonateGuildClick",
+                        "GuildClick"
+                    ]
+                }
+            },
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
+            "name": "公会商店购买票",
+            "entry": "GuildShopTask",
+            "pipeline_override": {
+                "GuildClick": {
+                    "next": [
+                        "GuildShopButton",
+                        "GuildClick"
+                    ]
+                }
+            },
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
+            "name": "创房战斗",
+            "entry": "DungeonTask",
             "option": [
+                "呼叫支援",
+                "副本系列",
+                "副本选择",
                 "助战元素属性",
                 "助战优先"
             ],
-            "doc": "[color:blue][size:20]需配置好队伍 助战优先会在前三中优选匹配对应文字[/size][/color]",
+            "pipeline_override": {
+                "DungeonSelectGo": {
+                    "next": [
+                        "[JumpBack]CreateRoomSelect",
+                        "CreateRoom",
+                        "DungeonSelectGo"
+                    ]
+                },
+                "UseMpAddFlows": {
+                    "next": [
+                        "CheckMp",
+                        "[JumpBack]UseMpConfirm"
+                    ]
+                },
+                "RestoreMpMainInverse": {
+                    "next": [
+                        "DungeonTask"
+                    ]
+                }
+            },
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
+            "name": "每日奖励",
+            "entry": "DailyTask",
             "repeatable": true,
             "repeat_count": 1
         },
@@ -109,21 +148,36 @@
             "repeat_count": 1
         },
         {
-            "name": "蹭房战斗",
-            "entry": "JoinRoomTask",
+            "name": "桃符刷小怪",
+            "entry": "TaoFuTask",
             "option": [
-                "副本",
                 "助战元素属性",
                 "助战优先"
             ],
-            "pipeline_override": {
-                "SelectAssistTry1": {
-                    "post_wait_freezes": 0
-                },
-                "SelectAssistTry2": {
-                    "post_wait_freezes": 0
-                }
-            },
+            "doc": "[color:blue][size:20]需配置好队伍 助战优先会在前三中优选匹配对应文字[/size][/color]",
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
+            "name": "入侵深渊刷小怪",
+            "entry": "AbyssTask",
+            "option": [
+                "助战元素属性",
+                "助战优先"
+            ],
+            "doc": "[color:blue][size:20]需配置好队伍 助战优先会在前三中优选匹配对应文字[/size][/color]",
+            "repeatable": true,
+            "repeat_count": 1
+        },
+        {
+            "name": "入侵深渊自动创房战斗",
+            "entry": "AbyssRoomTask",
+            "option": [
+                "使徒等级",
+                "助战元素属性",
+                "助战优先"
+            ],
+            "doc": "[color:blue][size:20]需配置好队伍 并自行到达要打的怪处 助战优先会在前三中优选匹配对应文字[/size][/color]",
             "repeatable": true,
             "repeat_count": 1
         },
@@ -875,5 +929,143 @@
                 }
             }
         },
+        "副本系列": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "神祝之翼",
+                    "pipeline_override": {
+                        "DungeonSwitchSeriesClick": {
+                            "template": [
+                                "Dungeon/神祝之翼切换__375_602_108_89__325_552_208_189.png"
+                            ]
+                        },
+                        "DungeonSwitchSeriesMain": {
+                            "template": [
+                                "Dungeon/神祝之翼__313_79_172_219__263_29_272_319.png"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "始源巨兽",
+                    "pipeline_override": {
+                        "DungeonSwitchSeriesClick": {
+                            "template": [
+                                "Dungeon/始源巨兽切换__378_475_107_88__328_425_207_188.png"
+                            ]
+                        },
+                        "DungeonSwitchSeriesMain": {
+                            "template": [
+                                "Dungeon/始源巨兽__313_79_172_219__263_29_272_319.png"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "王国灾厄",
+                    "pipeline_override": {
+                        "DungeonSwitchSeriesClick": {
+                            "template": [
+                                "Dungeon/王国灾厄切换__381_351_106_87__331_301_206_187.png"
+                            ]
+                        },
+                        "DungeonSwitchSeriesMain": {
+                            "template": [
+                                "Dungeon/王国灾厄__313_79_172_219__263_29_272_319.png"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "副本选择": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "天使",
+                    "pipeline_override": {
+                        "DungeonSelectTarget": {
+                            "expected": [
+                                "艾莉",
+                                "瑞尔"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "黑叔叔",
+                    "pipeline_override": {
+                        "DungeonSelectTarget": {
+                            "expected": [
+                                "康斯",
+                                "洛特"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "黑爷爷",
+                    "pipeline_override": {
+                        "DungeonSelectTarget": {
+                            "expected": [
+                                "诺维克",
+                                "幻影"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "黑太爷",
+                    "pipeline_override": {
+                        "DungeonSelectTarget": {
+                            "expected": [
+                                "诺维克",
+                                "幻影"
+                            ]
+                        },
+                        "CreateRoomSelect": {
+                            "enabled": true,
+                            "roi": [
+                                367,
+                                184,
+                                278,
+                                70
+                            ],
+                            "expected": [
+                                "诺维克",
+                                "幻影"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "呼叫支援": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "死后呼叫",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "直接呼叫",
+                    "pipeline_override": {
+                        "RoomBattleFlow": {
+                            "next": [
+                                "RoomBattleFinish",
+                                "[JumpBack]RoundSkip",
+                                "[JumpBack]ClickBlankContinue",
+                                "[JumpBack]RoomBattleCallSupportFlow",
+                                "[JumpBack]BattleIng",
+                                "[JumpBack]RoomBattleReviveMain",
+                                "[JumpBack]RoomBattleCallSupport",
+                                "[JumpBack]ClickBlank"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
     }
 }

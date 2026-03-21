@@ -208,6 +208,7 @@
                 ]
             }
         },
+        "timeout": -1,
         "action": {
             "type": "Click"
         }

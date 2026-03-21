@@ -1,0 +1,133 @@
+{
+    "CreateRoom": {
+        "doc": "创建房间",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    285,
+                    973,
+                    428,
+                    197
+                ],
+                "expected": [
+                    "创建",
+                    "房间"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "CreateRoomConfirm",
+            "[JumpBack]SelectAssistMain",
+            "[JumpBack]CloseItemMain",
+            "[JumpBack]RestoreMp"
+        ],
+        "timeout": 4000
+    },
+    "CreateRoomSelect": {
+        "enabled": false,
+        "doc": "创建房间选择",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    285,
+                    973,
+                    428,
+                    197
+                ],
+                "expected": [
+                    "创建",
+                    "房间"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "max_hit": 1,
+        "post_wait_freezes": 500
+    },
+    "CreateRoomConfirm": {
+        "doc": "创建房间确认",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    270,
+                    1011,
+                    186,
+                    68
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "[JumpBack]CloseItemMain",
+            "RoomBattleFlow",
+            "CreateRoomStart"
+        ]
+    },
+    "CreateRoomStart": {
+        "doc": "创建房间开始战斗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    456,
+                    1187,
+                    192,
+                    55
+                ],
+                "expected": [
+                    "开始",
+                    "战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "[JumpBack]CloseItemMain",
+            "CreateRoomStartConfirm",
+            "RoomBattleFlow"
+        ]
+    },
+    "CreateRoomStartConfirm": {
+        "doc": "创建房间开始战斗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    386,
+                    778,
+                    264,
+                    132
+                ],
+                "expected": [
+                    "确定"
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "RoomBattleFlow",
+            "CreateRoomConfirm"
+        ]
+    }
+}

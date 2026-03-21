@@ -1,0 +1,23 @@
+{
+    "GuildClick": {
+        "doc": "点击公会",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    144,
+                    1142,
+                    457,
+                    121
+                ],
+                "expected": [
+                    "骑士团"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    }
+}

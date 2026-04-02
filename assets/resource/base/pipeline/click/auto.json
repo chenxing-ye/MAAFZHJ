@@ -1,0 +1,57 @@
+{
+    "AutoTask": {
+        "doc": "自动任务",
+        "next": [
+            "[JumpBack]AutoSkip",
+            "[JumpBack]RestoreMp",
+            "[JumpBack]ClickBlank",
+            "[JumpBack]ClickBlank2",
+            "[JumpBack]AutoNextDun",
+        ],
+        "timeout": -1
+    },
+    "AutoSkip": {
+        "doc": "自动跳过",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    248,
+                    1043,
+                    229,
+                    149
+                ],
+                "expected": [
+                    "跳",
+                    "过"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoNextDun": {
+        "doc": "自动下一关",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    42,
+                    1115,
+                    229,
+                    150
+                ],
+                "expected": [
+                    "下",
+                    "一关"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    }
+}

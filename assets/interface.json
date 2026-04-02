@@ -134,16 +134,9 @@
             "repeat_count": 1
         },
         {
-            "name": "自动吃体力",
-            "entry": "EmptyTask",
-            "pipeline_override": {
-                "EmptyTask": {
-                    "next": [
-                        "[JumpBack]RestoreMp",
-                        "EmptyTask"
-                    ]
-                }
-            },
+            "name": "自动任务",
+            "entry": "AutoTask",
+            "doc": "[color:blue][size:20]自动吃体力，跳过，下一关[/size][/color]",
             "repeatable": true,
             "repeat_count": 1
         },

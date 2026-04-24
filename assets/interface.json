@@ -136,7 +136,18 @@
         {
             "name": "自动任务",
             "entry": "AutoTask",
-            "doc": "[color:blue][size:20]自动吃体力，跳过，下一关[/size][/color]",
+            "option": [
+                "助战元素属性",
+                "助战优先",
+                "点击跳过",
+                "点击下一关",
+                "点击发送申请",
+                "点击确认",
+                "点击回合开始",
+                "点击挑战副本",
+                "点击出战确定"
+            ],
+            "doc": "[color:blue][size:20]自动点击各个按钮[/size][/color]",
             "repeatable": true,
             "repeat_count": 1
         },
@@ -889,39 +900,6 @@
                 }
             }
         },
-        "副本": {
-            "type": "input",
-            "inputs": [
-                {
-                    "name": "副本1",
-                    "pipeline_type": "string",
-                    "default": "诺维克",
-                    "verify": "^(?!\\s*$).+",
-                    "pattern_msg": "请输入第一优先识别的文字，如诺维克的幻影、诺维克、幻影",
-                    "description": "请输入第一优先识别的文字，如诺维克的幻影、诺维克、幻影"
-                },
-                {
-                    "name": "副本2",
-                    "pipeline_type": "string",
-                    "default": "诺维克",
-                    "verify": "^(?!\\s*$).+",
-                    "pattern_msg": "请输入第二优先识别的文字，如诺维克的幻影、诺维克、幻影",
-                    "description": "请输入第二优先识别的文字，如诺维克的幻影、诺维克、幻影"
-                }
-            ],
-            "pipeline_override": {
-                "JoinRoomSelect": {
-                    "expected": [
-                        "{副本1}"
-                    ]
-                },
-                "JoinRoomSelect1": {
-                    "expected": [
-                        "{副本2}"
-                    ]
-                }
-            }
-        },
         "副本系列": {
             "type": "select",
             "cases": [
@@ -1055,6 +1033,142 @@
                                 "[JumpBack]RoomBattleCallSupport",
                                 "[JumpBack]ClickBlank"
                             ]
+                        }
+                    }
+                }
+            ]
+        },
+        "点击跳过": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoSkip": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "点击下一关": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoNextDun": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "点击挑战": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoChallenge": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "点击发送申请": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoSendRequest": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "点击确认": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoConfirm": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "点击回合开始": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoStartRound": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "点击挑战副本": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoChallengeDun": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "点击出战确定": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoBatConfirm": {
+                            "enable": false
                         }
                     }
                 }

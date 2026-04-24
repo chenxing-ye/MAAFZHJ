@@ -50,6 +50,57 @@
         },
         "post_wait_freezes": 500,
         "next": [
+            "GuildShopSelectCanGet",
+            "GuildShopMain"
+        ],
+        "timeout": 3000
+    },
+    "GuildShopSelectCanGet": {
+        "doc": "公会商店未勾选可兑换",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    455,
+                    410,
+                    116,
+                    107
+                ],
+                "template": [
+                    "Guild/未勾选可兑换__492_442_68_59__442_392_168_159.png"
+                ],
+                "threshold": 0.9
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "GuildShopSelectCanGetFinish",
+            "GuildShopSelectCanGet"
+        ],
+        "timeout": 3000
+    },
+    "GuildShopSelectCanGetFinish": {
+        "doc": "公会商店勾选可兑换完成",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    455,
+                    410,
+                    116,
+                    107
+                ],
+                "template": [
+                    "Guild/勾选可兑换__492_442_68_59__442_392_168_159.png"
+                ],
+                "threshold": 0.9
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
             "[JumpBack]GuildShopBuy",
             "[JumpBack]ClickBlank"
         ],

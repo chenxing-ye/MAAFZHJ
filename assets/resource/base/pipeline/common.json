@@ -168,8 +168,29 @@
     "CloseMp": {
         "next": [
             "[JumpBack]CloseMpButton",
-            "[JumpBack]BackButton",
+            "[JumpBack]CloseRestoreMp",
             "RestoreMpMainInverse"
+        ]
+    },
+    "CloseRestoreMp": {
+        "doc": "关闭补充体力界面",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    251,
+                    139,
+                    197,
+                    73
+                ],
+                "expected": [
+                    "补充",
+                    "体力"
+                ]
+            }
+        },
+        "next": [
+            "BackButton"
         ]
     },
     "CloseMpButton": {
@@ -214,5 +235,25 @@
         }
     },
     "EmptyTask": {
+    },
+    "CloseItemDetail": {
+        "doc": "关闭物品详情界面",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    504,
+                    286,
+                    203,
+                    217
+                ],
+                "template": [
+                    "Common/关闭物品详情按钮__582_350_56_54__532_300_156_154.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
     }
 }

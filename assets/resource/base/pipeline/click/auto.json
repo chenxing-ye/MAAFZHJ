@@ -7,6 +7,14 @@
             "[JumpBack]ClickBlank",
             "[JumpBack]ClickBlank2",
             "[JumpBack]AutoNextDun",
+            "[JumpBack]AutoConfirm",
+            "[JumpBack]AutoSendRequest",
+            "[JumpBack]AutoChallenge",
+            "[JumpBack]SelectAssistMain",
+            "[JumpBack]AutoStartRound",
+            "[JumpBack]AutoChallengeDun",
+            "[JumpBack]AutoBatConfirm",
+            "[JumpBack]CloseItemDetail"
         ],
         "timeout": -1
     },
@@ -46,6 +54,135 @@
                 "expected": [
                     "下",
                     "一关"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoChallenge": {
+        "doc": "自动挑战",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    512,
+                    697,
+                    169,
+                    169
+                ],
+                "expected": [
+                    "挑战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoSendRequest": {
+        "doc": "自动发送申请",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    394,
+                    825,
+                    263,
+                    78
+                ],
+                "expected": [
+                    "发送",
+                    "申请"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoConfirm": {
+        "doc": "自动确认",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    270,
+                    1136,
+                    396,
+                    107
+                ],
+                "expected": [
+                    "确认"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoStartRound": {
+        "doc": "自动回合开始",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    265,
+                    1067,
+                    226,
+                    79
+                ],
+                "expected": [
+                    "回",
+                    "合"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoChallengeDun": {
+        "doc": "自动挑战副本",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    249,
+                    1007,
+                    219,
+                    79
+                ],
+                "expected": [
+                    "挑战",
+                    "副本"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoBatConfirm": {
+        "doc": "自动出战确定",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    249,
+                    1007,
+                    219,
+                    79
+                ],
+                "expected": [
+                    "确定"
                 ]
             }
         },

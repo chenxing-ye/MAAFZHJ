@@ -2,6 +2,7 @@
     "AutoTask": {
         "doc": "自动任务",
         "next": [
+            "[JumpBack]AutoOpenBurst",
             "[JumpBack]AutoSkip",
             "[JumpBack]RestoreMp",
             "[JumpBack]ClickBlank",
@@ -183,6 +184,27 @@
                 ],
                 "expected": [
                     "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoOpenBurst": {
+        "doc": "自动开启奥义",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    46,
+                    1090,
+                    152,
+                    43
+                ],
+                "expected": [
+                    "关闭"
                 ]
             }
         },

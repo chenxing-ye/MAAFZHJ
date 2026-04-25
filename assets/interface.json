@@ -25,6 +25,7 @@
         {
             "name": "PC端",
             "type": "Win32",
+            "display_short_side": 720, // 默认缩放分辨率的短边长度
             "win32": {
                 "class_regex": ".*",
                 "window_regex": "风之痕迹"
@@ -153,7 +154,8 @@
                 "点击确认",
                 "点击回合开始",
                 "点击挑战副本",
-                "点击出战确定"
+                "点击出战确定",
+                "点击开启奥义"
             ],
             "doc": "[color:blue][size:20]自动点击各个按钮[/size][/color]",
             "repeatable": true,
@@ -1177,6 +1179,31 @@
                     "pipeline_override": {
                         "AutoBatConfirm": {
                             "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "点击开启奥义": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {
+                        "AutoOpenBurst": {
+                            "expected": [
+                                "关闭"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoOpenBurst": {
+                            "expected": [
+                                "释放"
+                            ]
                         }
                     }
                 }

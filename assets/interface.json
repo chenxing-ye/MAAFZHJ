@@ -21,6 +21,14 @@
             "name": "安卓端",
             "type": "Adb",
             "display_short_side": 720 // 默认缩放分辨率的短边长度
+        },
+        {
+            "name": "PC端",
+            "type": "Win32",
+            "win32": {
+                "class_regex": ".*",
+                "window_regex": "风之痕迹"
+            }
         }
     ],
     "resource": [

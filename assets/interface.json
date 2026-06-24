@@ -155,7 +155,10 @@
                 "点击回合开始",
                 "点击挑战副本",
                 "点击出战确定",
-                "点击开启奥义"
+                "点击开启奥义",
+                "点击创建房间",
+                "点击确认开始房间战斗",
+                "点击开始房间战斗"
             ],
             "doc": "[color:blue][size:20]自动点击各个按钮[/size][/color]",
             "repeatable": true,
@@ -1204,6 +1207,57 @@
                             "expected": [
                                 "释放"
                             ]
+                        }
+                    }
+                }
+            ]
+        },
+        "点击创建房间": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoCreamRoom": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "点击开始房间战斗": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoRoomStart": {
+                            "enable": false
+                        }
+                    }
+                }
+            ]
+        },
+        "点击确认开始房间战斗": {
+            "type": "switch",
+            "cases": [
+                {
+                    "name": "Yes",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "No",
+                    "pipeline_override": {
+                        "AutoconfirmRoomStart": {
+                            "enable": false
                         }
                     }
                 }

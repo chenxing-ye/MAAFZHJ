@@ -15,7 +15,10 @@
             "[JumpBack]AutoStartRound",
             "[JumpBack]AutoChallengeDun",
             "[JumpBack]AutoBatConfirm",
-            "[JumpBack]CloseItemDetail"
+            "[JumpBack]CloseItemDetail",
+            "[JumpBack]AutoCreamRoom",
+            "[JumpBack]AutoconfirmRoomStart",
+            "[JumpBack]AutoRoomStart"
         ],
         "timeout": -1
     },
@@ -205,6 +208,70 @@
                 ],
                 "expected": [
                     "关闭"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoCreamRoom": {
+        "doc": "自动创建房间",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    411,
+                    1015,
+                    203,
+                    71
+                ],
+                "expected": [
+                    "创建",
+                    "房间"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoRoomStart": {
+        "doc": "自动开始房间战斗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    413,
+                    1184,
+                    181,
+                    57
+                ],
+                "expected": [
+                    "开始战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_delay": 500
+    },
+    "AutoconfirmRoomStart": {
+        "doc": "自动确认开始房间战斗",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    454,
+                    835,
+                    123,
+                    48
+                ],
+                "expected": [
+                    "确定"
                 ]
             }
         },
